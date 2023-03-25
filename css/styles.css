@@ -240,6 +240,12 @@ a {
    margin-top: 12px;
 }
 
+.subtitle {
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 1.4;
+}
+
 /*----------------------------------------------- SECTION ABOUT*/
 
 .section--about {
@@ -258,6 +264,8 @@ a {
    width: 50%;
 }
 
+/*-----left part*/
+
 .aout-image {
    display: flex;
    justify-content: center;
@@ -273,7 +281,58 @@ a {
 
 .aout-image img {
    position: absolute;
+   max-width: 72%;
+   height: auto;
    transform: translate(0px, -15%);
+}
+
+.apple-shadow {
+   width: 45.81%;
+   display: block;
+   position: absolute;
+   bottom: 12%;
+   background: var(--gradient);
+}
+.apple-shadow:before {
+   content: '';
+   display: block;
+   width: 100%;
+   padding-top: 34.52%;
+}
+
+/*-----right part*/
+
+.section--about .button {
+   margin-top: 32px;
+}
+
+.section--about .title-wrapp {
+   margin-bottom: 40px;
+}
+
+.about-list {
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: -12px;
+   margin-bottom: -12px;
+}
+
+.about-list li {
+   width: calc((100% - 67px * 1) / 2);
+   margin: 12px 0px;
+   margin-right: 67px;
+}
+
+.about-list li:nth-child(2n) {
+   margin-right: 0px;
+}
+
+.about-list .subtitle {
+   margin: 8px 0px;
+}
+
+.about-list .text {
+   margin-top: 8px;
 }
 
 /*----------------------------------------------- FOOTER*/
@@ -281,5 +340,4 @@ a {
 .footer {
    background: var(--white) url(../images/footer_bg.png) no-repeat center bottom;
    background-size: cover;
-   color: var(--white);
 }
