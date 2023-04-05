@@ -1,19 +1,20 @@
-"use strict";
-const mediaFiles = document.querySelectorAll("img"),
-      wrapper = document.querySelector(".preloader"),
-      procent = document.querySelector("[data-preloader]");
-var i = 0;
-console.log(mediaFiles.length);
-mediaFiles.forEach(loadItem => {
-   loadItem.onload = function () {
-      i++;
-      console.log(i);
-      procent.innerHTML = ((i * 100) / mediaFiles.length).toFixed() + "%";
-      if (i === mediaFiles.length) {
-         setTimeout(() => {
-            wrapper.classList.add("is--hidden");
-            procent.innerHTML = "100%";
-         }, 500);
-      }
+const preloaderWrapper = document.querySelector('.preloader'),
+   preloaderProcent = document.querySelector('[data-preloader]'),
+   preloaderSvg = document.querySelector('.preloader__svg');
+
+let preloaderCount = 0;
+let loadProcess = setInterval(preloader, 40);
+
+function preloader() {
+   preloaderCount = preloaderCount + 3.125;
+   if (preloaderCount < 100) {
+      preloaderProcent.innerHTML = preloaderCount.toFixed(1) + '%';
+      preloaderSvg.style.width = preloaderCount.toFixed(1) + '%';
+   } else {
+      clearInterval(loadProcess);
+      preloaderProcent.innerHTML = '100%';
+      setTimeout(function () {
+         preloaderWrapper.classList.add('is--hidden');
+      }, 200);
    }
-});
+}

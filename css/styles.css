@@ -7,7 +7,7 @@
    --yellou: #ffe550;
    --red: #ff705d;
    --gradient: radial-gradient(50% 50% at 50% 50%, #2f583f 0%, rgba(105, 105, 105, 0) 100%);
-   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+   --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
 html {
    height: 100%;
@@ -130,8 +130,8 @@ a {
    visibility: visible;
    pointer-events: all;
    z-index: 9999;
-   background: var(--white);
-   transition: opacity var(--transition), visibility var(--transition);
+   background: var(--grey);
+   transition: opacity 600ms var(--transition), visibility 600ms var(--transition);
 }
 
 .preloader.is--hidden {
@@ -146,14 +146,29 @@ a {
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
-   width: 100px;
-   height: 100px;
+   width: 200px;
+   height: auto;
 }
 
 .preloader__procent p {
-   font-size: 30px;
+   position: relative;
+   font-size: 58px;
    line-height: 1;
    font-weight: 700;
+   z-index: 2;
+}
+
+.preloader__svg {
+   display: block;
+   position: absolute;
+   z-index: 1;
+   width: 0%;
+   height: 20px;
+   border-radius: 4px;
+   left: 0;
+   bottom: 0;
+   transition: width 50ms linear 0s;
+   background: var(--yellou);
 }
 
 /*----------------------------------------------- HEADER*/
@@ -425,7 +440,7 @@ a {
    background: var(--white);
    box-sizing: border-box;
    width: 100%;
-   transition: border var(--transition);
+   transition: border 250ms var(--transition);
    border-radius: 50%;
 }
 .favorites__item .link:hover,
