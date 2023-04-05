@@ -116,6 +116,46 @@ a {
    padding: 11px 22px;
 }
 
+/*----------------------------------------------- PRELOADER*/
+
+.preloader {
+   position: fixed;
+   display: flex;
+   width: 100%;
+   height: 100%;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   opacity: 1;
+   visibility: visible;
+   pointer-events: all;
+   z-index: 9999;
+   background: var(--white);
+   transition: opacity var(--transition), visibility var(--transition);
+}
+
+.preloader.is--hidden {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+}
+
+.preloader__procent {
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 100px;
+}
+
+.preloader__procent p {
+   font-size: 30px;
+   line-height: 1;
+   font-weight: 700;
+}
+
 /*----------------------------------------------- HEADER*/
 
 .header {
@@ -129,6 +169,10 @@ a {
    flex-wrap: wrap;
    justify-content: space-between;
    align-items: center;
+}
+
+.logo svg {
+   display: block;
 }
 
 .menu {
@@ -205,6 +249,21 @@ a {
    position: absolute;
    width: 100%;
    height: auto;
+}
+
+.responsiveSlider--foodsta {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.foodstaSlider {
+   position: relative;
+   height: 100%;
+   border-radius: 500px;
+   overflow: hidden;
 }
 
 .cube:before {

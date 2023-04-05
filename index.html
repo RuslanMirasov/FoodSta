@@ -14,22 +14,34 @@
       <title>FoodSta</title>
    </head>
    <body>
+      <!-- preloader -->
+      <div class="preloader">
+         <div class="preloader__procent">
+            <p data-preloader>0%</p>
+         </div>
+      </div>
+
       <!--header-->
       <header class="header">
          <div class="container">
             <a href="./" class="logo">
-               <img src="./images/logo.svg" alt="food logo" width="66" height="52" />
+               <svg width="66" height="52"><use href="./images/icons.svg#logo"></use></svg>
             </a>
-            <nav>
-               <ul class="menu">
-                  <li class="menu__item"><a href="#" data-target="class_name">Home</a></li>
-                  <li class="menu__item"><a href="#" data-target="class_name">About</a></li>
-                  <li class="menu__item"><a href="#" data-target="class_name">Service</a></li>
-                  <li class="menu__item"><a href="#" data-target="class_name">Menu</a></li>
-                  <li class="menu__item"><a href="#" data-target="class_name">Contact</a></li>
-               </ul>
-            </nav>
-            <button class="button">Order Now</button>
+            <div class="menu-backdrop">
+               <div class="menu-body">
+                  <nav>
+                     <ul class="menu">
+                        <li class="menu__item"><a href="#" data-target="class_name">Home</a></li>
+                        <li class="menu__item"><a href="#" data-target="class_name">About</a></li>
+                        <li class="menu__item"><a href="#" data-target="class_name">Service</a></li>
+                        <li class="menu__item"><a href="#" data-target="class_name">Menu</a></li>
+                        <li class="menu__item"><a href="#" data-target="class_name">Contact</a></li>
+                     </ul>
+                  </nav>
+                  <button class="button">Order Now</button>
+               </div>
+            </div>
+            <!-- <button type="button" class="burger"></button> -->
          </div>
       </header>
       <!--header end-->
@@ -42,13 +54,63 @@
                <div class="title-wrapp">
                   <h1 class="title">Enjoy Your Favorite Food From Anywhere</h1>
                   <p>
-                     With just a few clicks, you can have your favorite meals delivered straight to your doorstep, no matter where you are. Order now
-                     and enjoy a hassle-free and delicious meal from the comfort of your own home.
+                     With just a few clicks, you can have your favorite meals delivered straight to your doorstep, no matter where you are. Order now and enjoy
+                     a hassle-free and delicious meal from the comfort of your own home.
                   </p>
                   <button class="button medium">Order Now</button>
                </div>
                <div class="hero-images cube">
-                  <img src="./images/slider/1.png" alt="food" width="528" height="528" />
+                  <!--SLIDER-->
+                  <div
+                     class="responsiveSlider responsiveSlider--foodsta"
+                     data-col="1"
+                     data-coltab="1"
+                     data-colmob="1"
+                     data-margin="0"
+                     data-marginmobil="0"
+                     data-effect="slide"
+                     data-autoplay="0"
+                     data-move="true"
+                     data-loop="true"
+                  >
+                     <div class="swiper-container foodstaSlider">
+                        <div class="swiper-wrapper">
+                           <!--slide 1-->
+                           <div class="swiper-slide">
+                              <img
+                                 srcset="./images/slider/1.jpg 1x, ./images/slider/1@2x.jpg 2x"
+                                 src="./images/slider/1.jpg"
+                                 alt="food"
+                                 width="528"
+                                 height="528"
+                              />
+                           </div>
+                           <!--slide 2-->
+                           <div class="swiper-slide">
+                              <img
+                                 srcset="./images/slider/2.jpg 1x, ./images/slider/2@2x.jpg 2x"
+                                 src="./images/slider/2.jpg"
+                                 alt="food"
+                                 width="528"
+                                 height="528"
+                              />
+                           </div>
+                           <!--slide 3-->
+                           <div class="swiper-slide">
+                              <img
+                                 srcset="./images/slider/3.jpg 1x, ./images/slider/3@2x.jpg 2x"
+                                 src="./images/slider/3.jpg"
+                                 alt="food"
+                                 width="528"
+                                 height="528"
+                              />
+                           </div>
+                        </div>
+                     </div>
+                     <!--arrows-->
+                     <div class="slider-arrow slider-arrow--left outside foodstaSlider_prev"></div>
+                     <div class="slider-arrow slider-arrow--right outside foodstaSlider_next"></div>
+                  </div>
                </div>
             </div>
          </section>
@@ -67,8 +129,8 @@
                   <div class="title-wrapp">
                      <h2 class="title">What`s Special About Our Offerings</h2>
                      <p>
-                        With our platform, you can browse through a diverse selection of cuisines and local restaurants, and choose from a variety of
-                        dishes that cater to your specific taste buds.
+                        With our platform, you can browse through a diverse selection of cuisines and local restaurants, and choose from a variety of dishes
+                        that cater to your specific taste buds.
                      </p>
                   </div>
                   <ul class="about-list">
@@ -76,16 +138,15 @@
                         <img src="./images/icons/section2_icon1.svg" alt="icon" width="48" height="48" />
                         <h3 class="subtitle">Fasest Delivery</h3>
                         <p class="text">
-                           Our advanced logistics system and dedicated delivery partners ensure that your meals are delivered to you within
-                           30-minutes.
+                           Our advanced logistics system and dedicated delivery partners ensure that your meals are delivered to you within 30-minutes.
                         </p>
                      </li>
                      <li>
                         <img src="./images/icons/section2_icon2.svg" alt="icon" width="48" height="48" />
                         <h3 class="subtitle">Easy To Order</h3>
                         <p class="text">
-                           You can browse through a wide variety of cuisines and restaurants, select your favorite meals, and place your order in just
-                           a few clicks.
+                           You can browse through a wide variety of cuisines and restaurants, select your favorite meals, and place your order in just a few
+                           clicks.
                         </p>
                      </li>
                   </ul>
@@ -187,8 +248,8 @@
                         <li><img src="./images/icons/star.svg" alt="star" class="star" width="17" height="16" /></li>
                      </ul>
                      <p>
-                        “The Best app I have used to order food in a while, so many options to choose from too, I would recommend to a freind, No
-                        questions asked”
+                        “The Best app I have used to order food in a while, so many options to choose from too, I would recommend to a freind, No questions
+                        asked”
                      </p>
                      <img src="./images/testemonials/1.png" alt="Sumith Shah" width="48" height="48" />
                      <h3>Sumith Shah</h3>
@@ -203,8 +264,7 @@
                         <li><img src="./images/icons/star.svg" alt="star" class="star" width="17" height="16" /></li>
                      </ul>
                      <p>
-                        “The ease with which I can just go in and order what i want was amazing, It has been a very pleasant experience ordering from
-                        this app”
+                        “The ease with which I can just go in and order what i want was amazing, It has been a very pleasant experience ordering from this app”
                      </p>
                      <img src="./images/testemonials/1.png" alt="Sumith Shah" width="48" height="48" />
                      <h3>Sumith Shah</h3>
@@ -235,7 +295,7 @@
       <footer class="footer">
          <div class="container">
             <a href="./" class="logo">
-               <img src="./images/logo.svg" alt="food logo" width="66" height="52" />
+               <svg width="66" height="52"><use href="./images/icons.svg#logo"></use></svg>
             </a>
             <nav>
                <ul class="menu">
@@ -260,5 +320,7 @@
          </div>
       </footer>
       <!--footer end-->
+
+      <script src="./js/preloader.js"></script>
    </body>
 </html>
