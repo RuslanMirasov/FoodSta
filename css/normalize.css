@@ -1,6 +1,6 @@
 html {
-   line-height: 1.15; /* 1 */
-   -webkit-text-size-adjust: 100%; /* 2 */
+   line-height: 1.15;
+   -webkit-text-size-adjust: 100%;
 }
 body {
    margin: 0;
@@ -25,7 +25,7 @@ a {
    background-color: transparent;
 }
 abbr[title] {
-   border-bottom: none;
+   border-bottom: 0;
    text-decoration: underline;
    text-decoration: underline dotted;
 }
@@ -65,8 +65,9 @@ select,
 textarea {
    font-family: inherit;
    margin: 0;
+   padding: 0;
+   outline: none;
 }
-
 button,
 input {
    overflow: visible;
@@ -80,6 +81,8 @@ button,
 [type='reset'],
 [type='submit'] {
    -webkit-appearance: button;
+   border: 0;
+   background: 0;
 }
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
@@ -128,8 +131,8 @@ textarea {
    -webkit-appearance: none;
 }
 ::-webkit-file-upload-button {
-   -webkit-appearance: button; /* 1 */
-   font: inherit; /* 2 */
+   -webkit-appearance: button;
+   font: inherit;
 }
 details {
    display: block;
@@ -148,7 +151,6 @@ template {
 *::after {
    box-sizing: border-box;
 }
-
 h1,
 h2,
 h3,
@@ -161,21 +163,21 @@ ul {
    padding: 0;
    margin: 0;
 }
-
-.main {
+main {
    width: 100%;
    overflow-x: hidden;
 }
-
-.list {
+ul,
+ol,
+menu {
    list-style: none;
 }
-
-.link {
+a {
    text-decoration: none;
-   outline: none;
+   outline: 0;
 }
-img {
+img,
+svg {
    display: block;
 }
 .cube:before {

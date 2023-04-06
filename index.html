@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="./css/styles.min.css" />
       <title>FoodSta</title>
    </head>
-   <body>
+   <body class="body">
       <!-- preloader -->
       <div class="preloader">
          <div class="preloader__procent">
@@ -25,24 +25,32 @@
       <!--header-->
       <header class="header">
          <div class="container">
-            <a href="./" class="logo">
+            <a href="#" class="logo" data-scrollto="section--hero">
                <svg width="66" height="52"><use href="./images/icons.svg#logo"></use></svg>
             </a>
             <div class="menu-backdrop">
+               <button type="button" class="closeArea" data-menu-open></button>
                <div class="menu-body">
-                  <nav>
-                     <ul class="menu">
-                        <li class="menu__item"><a href="#" data-target="class_name">Home</a></li>
-                        <li class="menu__item"><a href="#" data-target="class_name">About</a></li>
-                        <li class="menu__item"><a href="#" data-target="class_name">Service</a></li>
-                        <li class="menu__item"><a href="#" data-target="class_name">Menu</a></li>
-                        <li class="menu__item"><a href="#" data-target="class_name">Contact</a></li>
+                  <button type="button" class="closeBtn" data-menu-open>
+                     <svg width="12" height="12">
+                        <use href="./images/icons.svg#close"></use>
+                     </svg>
+                  </button>
+                  <nav class="menu">
+                     <ul>
+                        <li class="menu__item"><a href="#" data-scrollto="section--hero">Home</a></li>
+                        <li class="menu__item"><a href="#" data-scrollto="section--about">About</a></li>
+                        <li class="menu__item"><a href="#" data-scrollto="section--favorites">Menu</a></li>
+                        <li class="menu__item"><a href="#" data-scrollto="section--customers">Service</a></li>
+                        <li class="menu__item"><a href="#" data-scrollto="section--subscribe">Contact</a></li>
                      </ul>
                   </nav>
-                  <button class="button">Order Now</button>
+                  <button class="button" data-modal-open>Order Now</button>
                </div>
             </div>
-            <!-- <button type="button" class="burger"></button> -->
+            <button type="button" class="burger" data-menu-open>
+               <svg width="28" height="28"><use href="./images/icons.svg#burger"></use></svg>
+            </button>
          </div>
       </header>
       <!--header end-->
@@ -58,10 +66,9 @@
                      With just a few clicks, you can have your favorite meals delivered straight to your doorstep, no matter where you are. Order now and enjoy
                      a hassle-free and delicious meal from the comfort of your own home.
                   </p>
-                  <button class="button medium">Order Now</button>
+                  <button class="button medium" data-modal-open>Order Now</button>
                </div>
                <div class="hero-images cube">
-                  <!--SLIDER-->
                   <div
                      class="responsiveSlider responsiveSlider--foodsta"
                      data-col="1"
@@ -76,7 +83,6 @@
                   >
                      <div class="swiper-container foodstaSlider">
                         <div class="swiper-wrapper">
-                           <!--slide 1-->
                            <div class="swiper-slide">
                               <img
                                  srcset="./images/slider/1.jpg 1x, ./images/slider/1@2x.jpg 2x"
@@ -86,7 +92,6 @@
                                  height="528"
                               />
                            </div>
-                           <!--slide 2-->
                            <div class="swiper-slide">
                               <img
                                  srcset="./images/slider/2.jpg 1x, ./images/slider/2@2x.jpg 2x"
@@ -96,7 +101,6 @@
                                  height="528"
                               />
                            </div>
-                           <!--slide 3-->
                            <div class="swiper-slide">
                               <img
                                  srcset="./images/slider/3.jpg 1x, ./images/slider/3@2x.jpg 2x"
@@ -108,7 +112,6 @@
                            </div>
                         </div>
                      </div>
-                     <!--arrows-->
                      <div class="slider-arrow slider-arrow--left outside foodstaSlider_prev"></div>
                      <div class="slider-arrow slider-arrow--right outside foodstaSlider_next"></div>
                   </div>
@@ -151,7 +154,7 @@
                         </p>
                      </li>
                   </ul>
-                  <button class="button button--border medium">Order Now</button>
+                  <button class="button button--border medium" data-modal-open>Order Now</button>
                </div>
             </div>
          </section>
@@ -299,7 +302,7 @@
                <svg width="66" height="52"><use href="./images/icons.svg#logo"></use></svg>
             </a>
             <nav>
-               <ul class="menu">
+               <ul class="footer__menu">
                   <li class="menu__item"><a href="#" data-target="class_name">Home</a></li>
                   <li class="menu__item"><a href="#" data-target="class_name">About</a></li>
                   <li class="menu__item"><a href="#" data-target="class_name">Service</a></li>
@@ -322,6 +325,59 @@
       </footer>
       <!--footer end-->
 
-      <script src="./js/preloader.js"></script>
+      <!-- MODAL POPUP -->
+      <div class="backdrop is-hidden" data-modal>
+         <div class="popup__body">
+            <button type="button" class="closeArea" data-modal-close></button>
+            <!-- REQUEST -->
+            <div class="popup" id="request">
+               <button class="popup__close" data-modal-close>
+                  <svg width="12" height="12"><use href="./images/icons.svg#close"></use></svg>
+               </button>
+               <b class="popup-title">Order Form</b>
+               <p class="popup-subtitle">
+                  Fill in the form and we will get <br />
+                  back to you as soon as possible!
+               </p>
+               <form action="#" method="POST" autocomplete="off" class="form">
+                  <!-- name -->
+                  <label class="label">
+                     <span class="label__text">Name</span>
+                     <input type="text" class="input input--icon" name="name" />
+                     <svg class="label__icon" width="12" height="12"><use href="./images/icons.svg#alert"></use></svg>
+                  </label>
+                  <!-- Phone -->
+                  <label class="label">
+                     <span class="label__text">Phone</span>
+                     <input type="tel" class="input input--icon" name="phone" />
+                     <svg class="label__icon" width="12" height="12"><use href="./images/icons.svg#alert"></use></svg>
+                  </label>
+                  <!-- Email -->
+                  <label class="label">
+                     <span class="label__text">Email</span>
+                     <input type="email" class="input input--icon" name="email" />
+                     <svg class="label__icon" width="12" height="12"><use href="./images/icons.svg#alert"></use></svg>
+                  </label>
+                  <!-- Comment -->
+                  <label class="label">
+                     <span class="label__text">Comment</span>
+                     <textarea name="comment" class="input input--textarea" placeholder="Text input"></textarea>
+                  </label>
+                  <!-- policy -->
+                  <label class="label label--checkbox">
+                     <input type="checkbox" class="checkbox" name="policy" />
+                     <span class="label__text"> I accept the terms and conditions of the <a href="">Privacy Policy</a> </span>
+                     <svg class="checkbox__icon" width="16" height="16"><use href="./images/icons.svg#checkbox"></use></svg>
+                  </label>
+                  <!-- submit -->
+                  <button type="submit" class="button button--border medium">Send</button>
+               </form>
+            </div>
+         </div>
+      </div>
+      <!-- MODAL POPUP END-->
+
+      <script src="./js/modal.js"></script>
+      <script src="./js/scripts.js"></script>
    </body>
 </html>

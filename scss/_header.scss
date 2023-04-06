@@ -1,14 +1,44 @@
 /*----------------------------------------------- HEADER*/
 
 .header {
+   position: fixed;
    box-shadow: 0px 4px 24px rgba(105, 105, 105, 0.1);
    background-color: var(--white);
    padding: 10px 0px;
+   z-index: 20;
+   width: 100%;
    .container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      @media screen and (max-width: 767px) {
+         padding: 0px 20px;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1279px) {
+         padding: 0px 32px;
+      }
+      @media screen and (min-width: 1280px) {
+         padding: 0px 16px;
+      }
+   }
+   .button {
+      @media screen and (max-width: 767px) {
+         display: none;
+      }
+      @media screen and (min-width: 768px) {
+         display: inline-block;
+         margin-left: 30px;
+      }
+   }
+   .closeBtn,
+   .closeArea {
+      @media screen and (max-width: 767px) {
+         display: block;
+      }
+      @media screen and (min-width: 768px) {
+         display: none;
+      }
    }
 }
 
@@ -16,24 +46,148 @@
    display: block;
 }
 
-.menu {
-   display: flex;
-   flex-wrap: wrap;
-   color: var(--black);
-   li {
-      margin-right: 28px;
-      &:last-child {
-         margin-right: 0px;
-      }
-      a {
-         position: relative;
-         color: var(--black);
-         transition: 0.3s;
-         border-bottom: 1px solid rgba(0, 0, 0, 0);
-         &:hover {
-            color: var(--lime);
-            border-bottom: 1px solid var(--lime);
+.menu-backdrop {
+   @media screen and (max-width: 767px) {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 250ms var(--transition) 350ms, visibility 250ms var(--transition) 350ms;
+      &.is-open {
+         opacity: 1;
+         visibility: visible;
+         pointer-events: all;
+         transition: opacity 250ms var(--transition), visibility 250ms var(--transition);
+         .menu-body {
+            transform: translate(0%, 0%);
          }
       }
    }
+}
+
+.menu-body {
+   display: flex;
+   flex-wrap: wrap;
+   height: auto;
+   .closeBtn {
+      right: 4px;
+      top: 4px;
+   }
+   @media screen and (max-width: 767px) {
+      position: absolute;
+      right: 20px;
+      top: 50px;
+      width: 130px;
+      overflow: hidden;
+      z-index: 1;
+      background: var(--white);
+      box-shadow: 0px 4px 24px rgba(105, 105, 105, 0.1);
+      border-radius: 30px 0px 30px 30px;
+      transform: translate(101%, 0%);
+      transition: transform 600ms var(--transition);
+   }
+   @media screen and (min-width: 768px) {
+      justify-content: flex-end;
+      align-items: center;
+   }
+}
+
+.menu {
+   @media screen and (max-width: 767px) {
+      width: 100%;
+   }
+   @media screen and (min-width: 768px) {
+      width: auto;
+      ul {
+         display: flex;
+         flex-wrap: wrap;
+      }
+   }
+   .menu__item {
+      a {
+         display: block;
+         position: relative;
+         color: var(--black);
+         @media screen and (max-width: 767px) {
+            font-size: 16px;
+            line-height: 1.171875;
+            background: rgba(0, 0, 0, 0);
+            transition: background 250ms var(--transition);
+            padding: 16px;
+            &:hover,
+            &:focus,
+            &:active {
+               background: var(--lime);
+            }
+         }
+         @media screen and (min-width: 768px) {
+            font-size: 14px;
+            line-height: 1.1428;
+            border-bottom: 1px solid rgba(0, 0, 0, 0);
+            transition: color 250ms var(--transition), border-bottom 250ms var(--transition);
+            &:hover,
+            &:focus,
+            &:active {
+               color: var(--lime);
+               border-bottom: 1px solid var(--lime);
+            }
+         }
+      }
+      @media screen and (min-width: 768px) {
+         margin-right: 28px;
+         &:last-child {
+            margin-right: 0px;
+         }
+      }
+   }
+}
+
+.burger {
+   position: relative;
+   z-index: 3;
+   color: var(--green);
+   cursor: pointer;
+   svg {
+      fill: currentColor;
+   }
+   &.is-open {
+      color: var(--yellou);
+   }
+   @media screen and (max-width: 767px) {
+      display: block;
+   }
+   @media screen and (min-width: 768px) {
+      display: none;
+   }
+}
+
+.closeBtn {
+   width: 24px;
+   height: 24px;
+   display: flex;
+   position: absolute;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   z-index: 6;
+   color: var(--black);
+   svg {
+      fill: currentColor;
+   }
+}
+
+.closeArea {
+   position: absolute;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   height: 100%;
 }

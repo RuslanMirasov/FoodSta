@@ -1,0 +1,138 @@
+/*-----------------------------FORMS*/
+
+.label {
+   display: block;
+   position: relative;
+   margin-top: 48px;
+   text-align: left;
+}
+
+.label:first-child {
+   margin-top: 0px;
+}
+
+.label__text {
+   display: inline-block;
+   height: auto;
+   position: absolute;
+   left: 0px;
+   bottom: 100%;
+   transform: translateY(-4px);
+   font-size: 12px;
+   line-height: 1.16667;
+   letter-spacing: 0.04em;
+   color: var(--black);
+}
+
+/*input text & textarea*/
+.input {
+   display: inline-block;
+   width: 100%;
+   font-size: 16px;
+   line-height: 1.25;
+   padding: 12px 14px;
+   background: #ffffff;
+   outline: none;
+   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
+   border: 1px solid var(--yellou);
+   border-radius: 30px;
+   transition: border 250ms var(--transition);
+   &:focus {
+      border: 1px solid var(--green);
+   }
+}
+
+.input--icon {
+   padding-left: 38px;
+}
+
+.label__icon {
+   display: block;
+   position: absolute;
+   left: 16px;
+   top: 50%;
+   transform: translateY(-50%);
+   fill: var(--navy-blue-color);
+   transition: fill 250ms var(--transition);
+}
+
+.input--icon:focus + .label__icon {
+   fill: var(--iris-color);
+}
+
+.input--textarea {
+   display: block;
+   height: 120px;
+   resize: none;
+   line-height: 1.2;
+}
+
+/*checkbox*/
+.label--checkbox {
+   margin-top: 16px;
+}
+
+.label--checkbox .label__text {
+   display: block;
+   position: relative;
+   bottom: 0;
+   padding: 1px 0px 1px 24px;
+   transform: translateY(0px);
+   cursor: pointer;
+}
+
+.label--checkbox .label__text a {
+   color: var(--iris-color);
+   text-decoration: underline;
+}
+
+.checkbox {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   margin: -1px;
+   border: 0;
+   padding: 0;
+   clip: rect(0 0 0 0);
+   overflow: hidden;
+}
+
+.label--checkbox .label__text:after {
+   content: '';
+   display: block;
+   width: 16px;
+   height: 16px;
+   border: 1px solid var(--navy-blue-modal-color);
+   background: rgba(0, 0, 0, 0);
+   background-origin: border-box;
+   border-radius: 2px;
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   cursor: pointer;
+   transition: background 250ms var(--transition), border 250ms var(--transition);
+}
+
+.checkbox:checked + .label__text:after {
+   border: 1px solid var(--ocean-color);
+   background: var(--ocean-color);
+}
+
+.checkbox:focus + .label__text:after {
+   border: 1px solid var(--ocean-color);
+}
+
+.checkbox__icon {
+   display: block;
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   z-index: 2;
+   opacity: 0;
+   cursor: pointer;
+   transition: opacity 250ms var(--transition);
+}
+
+.checkbox:checked ~ .checkbox__icon {
+   opacity: 1;
+}
