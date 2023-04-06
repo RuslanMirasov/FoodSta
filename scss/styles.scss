@@ -1,0 +1,20 @@
+:root {
+   --green: #7eb101;
+   --lime: #bbf330;
+   --black: #2c2c2c;
+   --grey: #f5f5f5;
+   --white: #fefefe;
+   --yellou: #ffe550;
+   --red: #ff705d;
+   --gradient: radial-gradient(50% 50% at 50% 50%, #2f583f 0%, rgba(105, 105, 105, 0) 100%);
+   --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@import '_body';
+@import '_typography';
+@import '_buttons';
+@import '_preloader';
+@import '_header';
+@import '_section-hero';
+@import '_section-about';
+@import '_section-favorites';
+@import '_footer';

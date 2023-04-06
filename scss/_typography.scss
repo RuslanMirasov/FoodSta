@@ -1,0 +1,33 @@
+/*----------------------------------------------- TYPOGRAPHY */
+
+.title-wrapp {
+   display: inline-block;
+}
+
+.title-wrapp > * {
+   margin-bottom: 20px;
+}
+
+.title-wrapp > *:last-child {
+   margin-bottom: 0px;
+}
+
+.title {
+   font-size: 42px;
+   line-height: 1.2;
+   font-weight: 700;
+}
+
+.section--hero .title {
+   font-size: 48px;
+}
+
+.section--hero .button {
+   margin-top: 12px;
+}
+
+.subtitle {
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 1.4;
+}

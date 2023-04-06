@@ -1,0 +1,88 @@
+/*----------------------------------------------- SECTION ABOUT*/
+
+.section--about {
+   background: var(--yellou);
+   padding: 43px 0px;
+}
+
+.section--about .container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.container__inner {
+   width: 50%;
+}
+
+/*-----left part*/
+
+.aout-image {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   width: 100%;
+   max-width: 550px;
+   border-radius: 275px;
+   z-index: 1;
+   background: var(--white);
+   box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.5), inset 0 0 0 25px var(--yellou);
+}
+
+.aout-image img {
+   position: absolute;
+   max-width: 72%;
+   height: auto;
+   transform: translate(0px, -15%);
+}
+
+.apple-shadow {
+   width: 45.81%;
+   display: block;
+   position: absolute;
+   bottom: 12%;
+   background: var(--gradient);
+}
+.apple-shadow:before {
+   content: '';
+   display: block;
+   width: 100%;
+   padding-top: 34.52%;
+}
+
+/*-----right part*/
+
+.section--about .button {
+   margin-top: 32px;
+}
+
+.section--about .title-wrapp {
+   margin-bottom: 40px;
+}
+
+.about-list {
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: -12px;
+   margin-bottom: -12px;
+}
+
+.about-list li {
+   width: calc((100% - 67px * 1) / 2);
+   margin: 12px 0px;
+   margin-right: 67px;
+}
+
+.about-list li:nth-child(2n) {
+   margin-right: 0px;
+}
+
+.about-list .subtitle {
+   margin: 8px 0px;
+}
+
+.about-list .text {
+   margin-top: 8px;
+}

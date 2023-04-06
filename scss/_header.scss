@@ -1,0 +1,39 @@
+/*----------------------------------------------- HEADER*/
+
+.header {
+   box-shadow: 0px 4px 24px rgba(105, 105, 105, 0.1);
+   background-color: var(--white);
+   padding: 10px 0px;
+   .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+   }
+}
+
+.logo svg {
+   display: block;
+}
+
+.menu {
+   display: flex;
+   flex-wrap: wrap;
+   color: var(--black);
+   li {
+      margin-right: 28px;
+      &:last-child {
+         margin-right: 0px;
+      }
+      a {
+         position: relative;
+         color: var(--black);
+         transition: 0.3s;
+         border-bottom: 1px solid rgba(0, 0, 0, 0);
+         &:hover {
+            color: var(--lime);
+            border-bottom: 1px solid var(--lime);
+         }
+      }
+   }
+}

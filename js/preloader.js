@@ -3,7 +3,7 @@ const preloaderWrapper = document.querySelector('.preloader'),
    preloaderSvg = document.querySelector('.preloader__svg');
 
 let preloaderCount = 0;
-let loadProcess = setInterval(preloader, 40);
+let loadProcess = setInterval(preloader, 30);
 
 function preloader() {
    preloaderCount = preloaderCount + 3.125;

@@ -1,0 +1,38 @@
+/*----------------------------------------------- BUTTONS*/
+
+.button {
+   display: inline-block;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   font-size: 13px;
+   line-height: 1.5;
+   font-weight: 500;
+   padding: 6px 18px;
+   border-radius: 30px;
+   border: 2px solid var(--lime);
+   background: var(--lime);
+   color: var(--black);
+   transition: 0.3s;
+   cursor: pointer;
+   &:hover,
+   &:focus {
+      border: 2px solid var(--yellou);
+      background: var(--yellou);
+   }
+   &.button--border {
+      border: 2px solid var(--green);
+      background: #fff;
+      &:hover,
+      &:focus {
+         border: 2px solid var(--lime);
+         background: var(--lime);
+      }
+   }
+   &.medium {
+      padding: 10px 22px;
+   }
+   &.big {
+      padding: 11px 22px;
+   }
+}
