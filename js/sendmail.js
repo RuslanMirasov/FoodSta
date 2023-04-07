@@ -1,3 +1,12 @@
+document.querySelectorAll('input').forEach(field => {
+   field.addEventListener('focus', function () {
+      //let label = this.parentNode;
+      if (this.classList.contains('red')) {
+         this.classList.remove('red');
+      }
+   });
+});
+
 // //form send
 // jQuery(document).ready(function () {
 //    jQuery('.required').on('focus', function () {

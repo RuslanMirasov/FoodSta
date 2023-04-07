@@ -83,7 +83,7 @@ body.lock {
   border: 2px solid var(--lime);
   background: var(--lime);
   color: var(--black);
-  transition: 0.3s;
+  transition: 250ms var(--cubic);
   cursor: pointer;
 }
 .button:hover, .button:focus {
@@ -103,6 +103,11 @@ body.lock {
 }
 .button.big {
   padding: 11px 22px;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: auto;
+  pointer-events: none;
 }
 
 /*----------------------------------------------- PRELOADER*/
@@ -758,12 +763,16 @@ body.lock {
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  fill: var(--navy-blue-color);
+  fill: var(--placeholder);
   transition: fill 250ms var(--cubic);
 }
 
+.input--icon.red + .label__icon {
+  fill: var(--red);
+}
+
 .input--icon:focus + .label__icon {
-  fill: var(--iris-color);
+  fill: var(--green);
 }
 
 .input--textarea {
@@ -846,6 +855,14 @@ body.lock {
 
 .checkbox:checked ~ .checkbox__icon {
   opacity: 1;
+}
+
+.label__error {
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  color: var(--red);
 }
 
 /*-------------------- MODAL POPUP*/

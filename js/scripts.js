@@ -4,7 +4,11 @@ const mainContent = document.querySelector('.main'),
    header = document.querySelector('.header'),
    openMenuBtn = document.querySelectorAll('[data-menu-open]'),
    menu = document.querySelector('.menu-backdrop'),
-   burger = document.querySelector('.burger');
+   burger = document.querySelector('.burger'),
+   preloaderWrapper = document.querySelector('.preloader'),
+   preloaderProcent = document.querySelector('[data-preloader]'),
+   preloaderSvg = document.querySelector('.preloader__svg'),
+   mediaFiles = document.querySelectorAll('img, svg, video, audio');
 
 let headerHeight = 0;
 
@@ -20,6 +24,25 @@ function onloadFunctions() {
 // ON RESIZE PAGE FUNCTIONS
 function resizeFunctions() {
    mainPaddingTop();
+}
+
+//PRELOADER
+let i = 0;
+
+mediaFiles.forEach(file => {
+   file.onload = () => {
+      i++;
+      preloaderProcent.innerHTML = ((i * 100) / mediaFiles.length).toFixed() + '%';
+      preloaderSvg.style.width = ((i * 100) / mediaFiles.length).toFixed(1) + '%';
+   };
+});
+
+function preloaderHide() {
+   preloaderProcent.innerHTML = '100%';
+   preloaderSvg.style.width = '100%';
+   setTimeout(function () {
+      preloaderWrapper.classList.add('is--hidden');
+   }, 300);
 }
 
 // MAIN PADDING-TOP OPTIONS

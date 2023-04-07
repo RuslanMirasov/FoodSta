@@ -75,12 +75,15 @@
    left: 16px;
    top: 50%;
    transform: translateY(-50%);
-   fill: var(--navy-blue-color);
+   fill: var(--placeholder);
    transition: fill 250ms var(--cubic);
 }
 
+.input--icon.red + .label__icon {
+   fill: var(--red);
+}
 .input--icon:focus + .label__icon {
-   fill: var(--iris-color);
+   fill: var(--green);
 }
 
 .input--textarea {
@@ -163,4 +166,12 @@
 
 .checkbox:checked ~ .checkbox__icon {
    opacity: 1;
+}
+
+.label__error {
+   display: block;
+   position: absolute;
+   left: 0px;
+   top: 100%;
+   color: var(--red);
 }

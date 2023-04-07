@@ -13,7 +13,7 @@
    border: 2px solid var(--lime);
    background: var(--lime);
    color: var(--black);
-   transition: 0.3s;
+   transition: 250ms var(--cubic);
    cursor: pointer;
    &:hover,
    &:focus {
@@ -34,5 +34,10 @@
    }
    &.big {
       padding: 11px 22px;
+   }
+   &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+      pointer-events: none;
    }
 }
