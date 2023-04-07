@@ -152,7 +152,7 @@ body.lock {
   border-radius: 4px;
   left: 0;
   bottom: 0;
-  transition: width 50ms linear 0s;
+  transition: width 250ms var(--cubic) 0s;
   background: var(--yellou);
 }
 
