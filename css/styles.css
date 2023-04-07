@@ -3,12 +3,13 @@
   --lime: #bbf330;
   --black: #2c2c2c;
   --grey: #f5f5f5;
+  --placeholder: #c4c4c4;
   --white: #fefefe;
   --yellou: #ffe550;
   --red: #ff705d;
   --backdrop: rgba(94, 99, 99, 0.7);
   --gradient: radial-gradient(50% 50% at 50% 50%, #2f583f 0%, rgba(105, 105, 105, 0) 100%);
-  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -118,7 +119,7 @@ body.lock {
   pointer-events: all;
   z-index: 9999;
   background: var(--grey);
-  transition: opacity 600ms var(--transition), visibility 600ms var(--transition);
+  transition: opacity 600ms var(--cubic), visibility 600ms var(--cubic);
 }
 .preloader.is--hidden {
   opacity: 0;
@@ -198,13 +199,13 @@ body.lock {
 }
 @media screen and (max-width: 767px) {
   .header .closeBtn,
-.header .closeArea {
+.header .close-area {
     display: block;
   }
 }
 @media screen and (min-width: 768px) {
   .header .closeBtn,
-.header .closeArea {
+.header .close-area {
     display: none;
   }
 }
@@ -225,13 +226,13 @@ body.lock {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 250ms var(--transition) 350ms, visibility 250ms var(--transition) 350ms;
+    transition: opacity 250ms var(--cubic) 350ms, visibility 250ms var(--cubic) 350ms;
   }
   .menu-backdrop.is-open {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
-    transition: opacity 250ms var(--transition), visibility 250ms var(--transition);
+    transition: opacity 250ms var(--cubic), visibility 250ms var(--cubic);
   }
   .menu-backdrop.is-open .menu-body {
     transform: translate(0%, 0%);
@@ -259,7 +260,7 @@ body.lock {
     box-shadow: 0px 4px 24px rgba(105, 105, 105, 0.1);
     border-radius: 30px 0px 30px 30px;
     transform: translate(101%, 0%);
-    transition: transform 600ms var(--transition);
+    transition: transform 600ms var(--cubic);
   }
 }
 @media screen and (min-width: 768px) {
@@ -293,7 +294,7 @@ body.lock {
     font-size: 16px;
     line-height: 1.171875;
     background: rgba(0, 0, 0, 0);
-    transition: background 250ms var(--transition);
+    transition: background 250ms var(--cubic);
     padding: 16px;
   }
   .menu .menu__item a:hover, .menu .menu__item a:focus, .menu .menu__item a:active {
@@ -305,7 +306,7 @@ body.lock {
     font-size: 14px;
     line-height: 1.1428;
     border-bottom: 1px solid rgba(0, 0, 0, 0);
-    transition: color 250ms var(--transition), border-bottom 250ms var(--transition);
+    transition: color 250ms var(--cubic), border-bottom 250ms var(--cubic);
   }
   .menu .menu__item a:hover, .menu .menu__item a:focus, .menu .menu__item a:active {
     color: var(--lime);
@@ -359,7 +360,7 @@ body.lock {
   fill: currentColor;
 }
 
-.closeArea {
+.close-area {
   position: absolute;
   left: 0;
   top: 0;
@@ -545,7 +546,7 @@ body.lock {
   background: var(--white);
   box-sizing: border-box;
   width: 100%;
-  transition: border 250ms var(--transition);
+  transition: border 250ms var(--cubic);
   border-radius: 50%;
 }
 
@@ -657,6 +658,10 @@ body.lock {
 }
 
 /*-----------------------------FORMS*/
+.form {
+  position: relative;
+}
+
 .label {
   display: block;
   position: relative;
@@ -672,12 +677,12 @@ body.lock {
   display: inline-block;
   height: auto;
   position: absolute;
-  left: 0px;
+  left: 14px;
   bottom: 100%;
-  transform: translateY(-4px);
-  font-size: 12px;
-  line-height: 1.16667;
-  letter-spacing: 0.04em;
+  transform: translateY(0px);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 500;
   color: var(--black);
 }
 
@@ -687,20 +692,64 @@ body.lock {
   width: 100%;
   font-size: 16px;
   line-height: 1.25;
-  padding: 12px 14px;
+  padding: 13px 14px;
   background: #ffffff;
   outline: none;
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
   border: 1px solid var(--yellou);
   border-radius: 30px;
-  transition: border 250ms var(--transition);
+  color: var(--black);
+  transition: border 250ms var(--cubic);
+}
+.input.input--icon {
+  padding-left: 40px;
+}
+.input.red {
+  border: 1px solid var(--red);
+  color: var(--red);
+}
+.input::-moz-placeholder {
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--placeholder);
+  -moz-transition: opacity 250ms var(--cubic);
+  transition: opacity 250ms var(--cubic);
+  opacity: 1;
+}
+.input:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--placeholder);
+  -ms-transition: opacity 250ms var(--cubic);
+  transition: opacity 250ms var(--cubic);
+  opacity: 1;
+}
+.input::placeholder {
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--placeholder);
+  transition: opacity 250ms var(--cubic);
+  opacity: 1;
 }
 .input:focus {
   border: 1px solid var(--green);
 }
-
-.input--icon {
-  padding-left: 38px;
+.input:focus::-moz-placeholder {
+  opacity: 0;
+}
+.input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.input:focus::placeholder {
+  opacity: 0;
+}
+.input:-webkit-autofill {
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15) !important;
+  -webkit-text-fill-color: var(--black) !important;
+  color: var(--black) !important;
 }
 
 .label__icon {
@@ -710,7 +759,7 @@ body.lock {
   top: 50%;
   transform: translateY(-50%);
   fill: var(--navy-blue-color);
-  transition: fill 250ms var(--transition);
+  transition: fill 250ms var(--cubic);
 }
 
 .input--icon:focus + .label__icon {
@@ -732,6 +781,11 @@ body.lock {
 .label--checkbox .label__text {
   display: block;
   position: relative;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.1;
+  color: var(--black);
+  left: 0px;
   bottom: 0;
   padding: 1px 0px 1px 24px;
   transform: translateY(0px);
@@ -739,7 +793,7 @@ body.lock {
 }
 
 .label--checkbox .label__text a {
-  color: var(--iris-color);
+  color: var(--green);
   text-decoration: underline;
 }
 
@@ -759,7 +813,7 @@ body.lock {
   display: block;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--navy-blue-modal-color);
+  border: 1px solid var(--green);
   background: rgba(0, 0, 0, 0);
   background-origin: border-box;
   border-radius: 2px;
@@ -767,16 +821,20 @@ body.lock {
   left: 0px;
   top: 0px;
   cursor: pointer;
-  transition: background 250ms var(--transition), border 250ms var(--transition);
+  transition: background 250ms var(--cubic), border 250ms var(--cubic);
 }
 
 .checkbox:checked + .label__text:after {
-  border: 1px solid var(--ocean-color);
-  background: var(--ocean-color);
+  border: 1px solid var(--green) !important;
+  background: var(--green);
 }
 
 .checkbox:focus + .label__text:after {
-  border: 1px solid var(--ocean-color);
+  border: 1px solid var(--black);
+}
+
+.checkbox.red + .label__text:after {
+  border: 1px solid var(--red);
 }
 
 .checkbox__icon {
@@ -787,7 +845,7 @@ body.lock {
   z-index: 2;
   opacity: 0;
   cursor: pointer;
-  transition: opacity 250ms var(--transition);
+  transition: opacity 250ms var(--cubic);
 }
 
 .checkbox:checked ~ .checkbox__icon {
@@ -806,17 +864,16 @@ body.lock {
   background: var(--backdrop);
   opacity: 1;
   visibility: visible;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s, visibility 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s, visibility 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
   z-index: 99;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
 }
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s, visibility 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-}
-.backdrop.is-hidden .popup {
-  transform: translate(0px, 20px);
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s, visibility 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 .backdrop .popup__body {
   width: 100%;
@@ -830,20 +887,35 @@ body.lock {
 
 .popup {
   position: relative;
-  transform: translate(0px, 0px);
   width: 100%;
   max-width: 458px;
   height: auto;
+  text-align: center;
+  transform: translate(0px, 0px);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
   border-radius: 30px;
   background: var(--yellou);
   padding: 32px;
-  transition: transform 250ms var(--transition);
-  text-align: center;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: transform 300ms var(--cubic), opacity 300ms var(--cubic), visibility 300ms var(--cubic);
+}
+.popup.is-hidden {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0px, 10px);
 }
 .popup .button {
   margin-top: 32px;
   min-width: 110px;
+}
+@media screen and (max-width: 419px) {
+  .popup {
+    padding: 32px 16px;
+  }
 }
 
 .popup__close {
@@ -860,7 +932,7 @@ body.lock {
   color: var(--black);
   cursor: pointer;
   outline: none;
-  transition: background 250ms var(--transition);
+  transition: background 250ms var(--cubic);
 }
 .popup__close:hover, .popup__close:focus, .popup__close:active {
   background: var(--lime);

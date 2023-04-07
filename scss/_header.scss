@@ -32,7 +32,7 @@
       }
    }
    .closeBtn,
-   .closeArea {
+   .close-area {
       @media screen and (max-width: 767px) {
          display: block;
       }
@@ -58,12 +58,12 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: opacity 250ms var(--transition) 350ms, visibility 250ms var(--transition) 350ms;
+      transition: opacity 250ms var(--cubic) 350ms, visibility 250ms var(--cubic) 350ms;
       &.is-open {
          opacity: 1;
          visibility: visible;
          pointer-events: all;
-         transition: opacity 250ms var(--transition), visibility 250ms var(--transition);
+         transition: opacity 250ms var(--cubic), visibility 250ms var(--cubic);
          .menu-body {
             transform: translate(0%, 0%);
          }
@@ -90,7 +90,7 @@
       box-shadow: 0px 4px 24px rgba(105, 105, 105, 0.1);
       border-radius: 30px 0px 30px 30px;
       transform: translate(101%, 0%);
-      transition: transform 600ms var(--transition);
+      transition: transform 600ms var(--cubic);
    }
    @media screen and (min-width: 768px) {
       justify-content: flex-end;
@@ -118,7 +118,7 @@
             font-size: 16px;
             line-height: 1.171875;
             background: rgba(0, 0, 0, 0);
-            transition: background 250ms var(--transition);
+            transition: background 250ms var(--cubic);
             padding: 16px;
             &:hover,
             &:focus,
@@ -130,7 +130,7 @@
             font-size: 14px;
             line-height: 1.1428;
             border-bottom: 1px solid rgba(0, 0, 0, 0);
-            transition: color 250ms var(--transition), border-bottom 250ms var(--transition);
+            transition: color 250ms var(--cubic), border-bottom 250ms var(--cubic);
             &:hover,
             &:focus,
             &:active {
@@ -182,7 +182,7 @@
    }
 }
 
-.closeArea {
+.close-area {
    position: absolute;
    left: 0;
    top: 0;

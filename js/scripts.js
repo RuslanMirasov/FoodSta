@@ -52,7 +52,9 @@ scrollLinks.forEach(link => {
       event.preventDefault();
       let distance = document.querySelector('.' + this.dataset.scrollto).offsetTop - header.getBoundingClientRect().height;
       window.scrollTo({ top: distance, left: 0, behavior: 'smooth' });
-      menuToggle();
+      if (menu.classList.contains('is-open')) {
+         menuToggle();
+      }
    });
 });
 

@@ -29,7 +29,7 @@
                <svg width="66" height="52"><use href="./images/icons.svg#logo"></use></svg>
             </a>
             <div class="menu-backdrop">
-               <button type="button" class="closeArea" data-menu-open></button>
+               <button type="button" class="close-area" data-menu-open></button>
                <div class="menu-body">
                   <button type="button" class="closeBtn" data-menu-open>
                      <svg width="12" height="12">
@@ -45,7 +45,7 @@
                         <li class="menu__item"><a href="#" data-scrollto="section--subscribe">Contact</a></li>
                      </ul>
                   </nav>
-                  <button class="button" data-modal-open>Order Now</button>
+                  <button class="button" data-popup="test">Order Now</button>
                </div>
             </div>
             <button type="button" class="burger" data-menu-open>
@@ -66,7 +66,7 @@
                      With just a few clicks, you can have your favorite meals delivered straight to your doorstep, no matter where you are. Order now and enjoy
                      a hassle-free and delicious meal from the comfort of your own home.
                   </p>
-                  <button class="button medium" data-modal-open>Order Now</button>
+                  <button class="button medium" data-popup="request|Send order form2|Title2|Subtitle2|Button2">Order Now</button>
                </div>
                <div class="hero-images cube">
                   <div
@@ -154,7 +154,7 @@
                         </p>
                      </li>
                   </ul>
-                  <button class="button button--border medium" data-modal-open>Order Now</button>
+                  <button class="button button--border medium" data-popup="request|Send order form3|Title3|Subtitle3|Button3">Order Now</button>
                </div>
             </div>
          </section>
@@ -285,7 +285,11 @@
                <h2>Subscribe To Get Special Offers</h2>
                <p>Order now and receive 10% off your first meal with Enjoy Your Favorite Food From Anywhere.</p>
                <form action="#" method="POST">
-                  <input type="text" name="email" placeholder="Enter your email" />
+                  <!-- Email -->
+                  <label class="label">
+                     <span class="label__text">Email</span>
+                     <input type="email" class="input" name="email" placeholder="example@gmail.com" />
+                  </label>
                   <button type="submit" class="button big">Subscribe</button>
                </form>
                <img src="./images/section_subscribe_img.png" alt="banan" width="608" height="266" />
@@ -316,8 +320,12 @@
                <li><a href="#" class="link">Cookies Settings</a></li>
             </ul>
             <h2>Subscribe</h2>
-            <form action="#" method="POST">
-               <input type="text" name="email" placeholder="Enter your email" />
+            <form action="#" method="POST" class="form">
+               <!-- Email -->
+               <label class="label">
+                  <span class="label__text">Email</span>
+                  <input type="email" class="input" name="email" placeholder="example@gmail.com" />
+               </label>
                <button type="submit" class="button button--border big">Subscribe</button>
             </form>
             <p>By subscribing you agree to with our <a href="#" class="link">Privacy Policy</a></p>
@@ -326,12 +334,12 @@
       <!--footer end-->
 
       <!-- MODAL POPUP -->
-      <div class="backdrop is-hidden" data-modal>
+      <div class="backdrop is-hidden">
          <div class="popup__body">
-            <button type="button" class="closeArea" data-modal-close></button>
+            <button type="button" class="close-area" data-popup-close></button>
             <!-- REQUEST -->
-            <div class="popup" id="request">
-               <button class="popup__close" data-modal-close>
+            <div class="popup is-hidden" id="request">
+               <button class="popup__close" data-popup-close>
                   <svg width="12" height="12"><use href="./images/icons.svg#close"></use></svg>
                </button>
                <b class="popup-title">Order Form</b>
@@ -340,23 +348,21 @@
                   back to you as soon as possible!
                </p>
                <form action="#" method="POST" autocomplete="off" class="form">
+                  <input type="hidden" name="subject" class="subject" value="request form" />
                   <!-- name -->
                   <label class="label">
                      <span class="label__text">Name</span>
-                     <input type="text" class="input input--icon" name="name" />
-                     <svg class="label__icon" width="12" height="12"><use href="./images/icons.svg#alert"></use></svg>
+                     <input type="text" class="input red" name="name" placeholder="Your name" />
                   </label>
                   <!-- Phone -->
                   <label class="label">
-                     <span class="label__text">Phone</span>
-                     <input type="tel" class="input input--icon" name="phone" />
-                     <svg class="label__icon" width="12" height="12"><use href="./images/icons.svg#alert"></use></svg>
+                     <span class="label__text">Phone number</span>
+                     <input type="tel" class="input" name="phone" placeholder="+38(0__) ___ __ __" />
                   </label>
                   <!-- Email -->
                   <label class="label">
                      <span class="label__text">Email</span>
-                     <input type="email" class="input input--icon" name="email" />
-                     <svg class="label__icon" width="12" height="12"><use href="./images/icons.svg#alert"></use></svg>
+                     <input type="email" class="input" name="email" placeholder="example@gmail.com" />
                   </label>
                   <!-- Comment -->
                   <label class="label">
@@ -371,7 +377,32 @@
                   </label>
                   <!-- submit -->
                   <button type="submit" class="button button--border medium">Send</button>
+                  <button type="button" class="button button--border medium">sss</button>
                </form>
+            </div>
+
+            <!-- OK -->
+            <div class="popup is-hidden" id="ok">
+               <button class="popup__close" data-popup-close>
+                  <svg width="12" height="12"><use href="./images/icons.svg#close"></use></svg>
+               </button>
+               <b class="popup-title">Form was sended!</b>
+               <p class="popup-subtitle">thank you for your massege.</p>
+               <button type="submit" class="button button--border medium" data-popup="request">Close</button>
+            </div>
+
+            <!-- OK -->
+            <div class="popup is-hidden" id="test">
+               <button class="popup__close" data-popup-close>
+                  <svg width="12" height="12"><use href="./images/icons.svg#close"></use></svg>
+               </button>
+               <b class="popup-title">TEST</b>
+               <p class="popup-subtitle">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti odio cupiditate aspernatur, minima nemo iusto necessitatibus, totam
+                  laboriosam vitae magnam vero, ducimus illo animi! Quod saepe consequatur sunt nesciunt? Impedit iste velit provident, doloremque porro nihil
+                  veritatis cum non accusantium mole
+               </p>
+               <button type="submit" class="button button--border medium" data-popup="ok">ok</button>
             </div>
          </div>
       </div>

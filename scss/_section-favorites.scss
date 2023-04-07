@@ -28,7 +28,7 @@
    background: var(--white);
    box-sizing: border-box;
    width: 100%;
-   transition: border 250ms var(--transition);
+   transition: border 250ms var(--cubic);
    border-radius: 50%;
 }
 .favorites__item .link:hover,

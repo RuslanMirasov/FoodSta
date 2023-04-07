@@ -1,4 +1,7 @@
 /*-----------------------------FORMS*/
+.form {
+   position: relative;
+}
 
 .label {
    display: block;
@@ -15,12 +18,12 @@
    display: inline-block;
    height: auto;
    position: absolute;
-   left: 0px;
+   left: 14px;
    bottom: 100%;
-   transform: translateY(-4px);
-   font-size: 12px;
-   line-height: 1.16667;
-   letter-spacing: 0.04em;
+   transform: translateY(0px);
+   font-size: 16px;
+   line-height: 1.4;
+   font-weight: 500;
    color: var(--black);
 }
 
@@ -30,20 +33,40 @@
    width: 100%;
    font-size: 16px;
    line-height: 1.25;
-   padding: 12px 14px;
+   padding: 13px 14px;
    background: #ffffff;
    outline: none;
    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
    border: 1px solid var(--yellou);
    border-radius: 30px;
-   transition: border 250ms var(--transition);
+   color: var(--black);
+   transition: border 250ms var(--cubic);
+   &.input--icon {
+      padding-left: 40px;
+   }
+   &.red {
+      border: 1px solid var(--red);
+      color: var(--red);
+   }
+   &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 400;
+      color: var(--placeholder);
+      transition: opacity 250ms var(--cubic);
+      opacity: 1;
+   }
    &:focus {
       border: 1px solid var(--green);
+      &::placeholder {
+         opacity: 0;
+      }
    }
-}
-
-.input--icon {
-   padding-left: 38px;
+   &:-webkit-autofill {
+      box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15) !important;
+      -webkit-text-fill-color: var(--black) !important;
+      color: var(--black) !important;
+   }
 }
 
 .label__icon {
@@ -53,7 +76,7 @@
    top: 50%;
    transform: translateY(-50%);
    fill: var(--navy-blue-color);
-   transition: fill 250ms var(--transition);
+   transition: fill 250ms var(--cubic);
 }
 
 .input--icon:focus + .label__icon {
@@ -75,6 +98,11 @@
 .label--checkbox .label__text {
    display: block;
    position: relative;
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 1.1;
+   color: var(--black);
+   left: 0px;
    bottom: 0;
    padding: 1px 0px 1px 24px;
    transform: translateY(0px);
@@ -82,7 +110,7 @@
 }
 
 .label--checkbox .label__text a {
-   color: var(--iris-color);
+   color: var(--green);
    text-decoration: underline;
 }
 
@@ -102,7 +130,7 @@
    display: block;
    width: 16px;
    height: 16px;
-   border: 1px solid var(--navy-blue-modal-color);
+   border: 1px solid var(--green);
    background: rgba(0, 0, 0, 0);
    background-origin: border-box;
    border-radius: 2px;
@@ -110,16 +138,20 @@
    left: 0px;
    top: 0px;
    cursor: pointer;
-   transition: background 250ms var(--transition), border 250ms var(--transition);
+   transition: background 250ms var(--cubic), border 250ms var(--cubic);
 }
 
 .checkbox:checked + .label__text:after {
-   border: 1px solid var(--ocean-color);
-   background: var(--ocean-color);
+   border: 1px solid var(--green) !important;
+   background: var(--green);
 }
 
 .checkbox:focus + .label__text:after {
-   border: 1px solid var(--ocean-color);
+   border: 1px solid var(--black);
+}
+
+.checkbox.red + .label__text:after {
+   border: 1px solid var(--red);
 }
 
 .checkbox__icon {
@@ -130,7 +162,7 @@
    z-index: 2;
    opacity: 0;
    cursor: pointer;
-   transition: opacity 250ms var(--transition);
+   transition: opacity 250ms var(--cubic);
 }
 
 .checkbox:checked ~ .checkbox__icon {

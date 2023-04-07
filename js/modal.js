@@ -1,52 +1,93 @@
-(() => {
-  const refs = {
-    openModalBtn: document.querySelectorAll("[data-modal-open]"),
-    closeModalBtn: document.querySelectorAll("[data-modal-close]"),
-    modal: document.querySelectorAll("[data-modal]"),
-    modalPaddingElements: [].filter.call(document.all, e => getComputedStyle(e).position == 'fixed'),
-    body: document.querySelector(".body"),
-    bodyPadding: window.innerWidth - document.querySelector('.main').offsetWidth
-  };
+const popupOpen = document.querySelectorAll('[data-popup]'),
+   popupClose = document.querySelectorAll('[data-popup-close]'),
+   allPopups = document.querySelectorAll('.popup'),
+   modalBackdrop = document.querySelector('.backdrop'),
+   modalPaddingElements = [].filter.call(document.all, e => getComputedStyle(e).position == 'fixed'),
+   body = document.querySelector('.body'),
+   bodyPadding = window.innerWidth - document.querySelector('.main').offsetWidth;
 
-  refs.openModalBtn.forEach(modalBtn => {
-    modalBtn.addEventListener("click", modalOpen);
-  });
-  
-  refs.closeModalBtn.forEach(closeBtn => {
-    closeBtn.addEventListener("click", modalClose);
-  });
+let defaultPopupInfo = ['request', 'Send order form', 'Order Form', 'Fill in the form and we will get <br />back to you as soon as possible!', 'Send'];
 
-  function modalOpen() {
-    toggleModal();
-    bodyPaddingToggle();
-  }
+//POPUP OPEN EVENT
+popupOpen.forEach(modalBtn => {
+   modalBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      let info = this.dataset.popup.split('|');
+      modalOpen(info[0], info[1], info[2], info[3], info[4]);
+   });
+});
 
-  function modalClose() {
-    toggleModal();
-    setTimeout(function () {
+//POPUP CLOSE EVENT
+popupClose.forEach(closeBtn => {
+   closeBtn.addEventListener('click', modalClose);
+});
+
+//POPUP OPEN FUNCTION
+function modalOpen(id, subject, title, subtitle, btn) {
+   if (id == 'request') {
+      if (subject != undefined) {
+         document.querySelector('#request .subject').value = subject;
+      } else {
+         document.querySelector('#request .subject').value = defaultPopupInfo[1];
+      }
+      if (title != undefined) {
+         document.querySelector('#request .popup-title').innerHTML = title;
+      } else {
+         document.querySelector('#request .popup-title').innerHTML = defaultPopupInfo[2];
+      }
+      if (subtitle != undefined) {
+         document.querySelector('#request .popup-subtitle').innerHTML = subtitle;
+      } else {
+         document.querySelector('#request .popup-subtitle').innerHTML = defaultPopupInfo[3];
+      }
+      if (btn != undefined) {
+         document.querySelector('#request .button[type="submit"]').innerHTML = btn;
+      } else {
+         document.querySelector('#request .button[type="submit"]').innerHTML = defaultPopupInfo[4];
+      }
+   }
+   if (modalBackdrop.classList.contains('is-hidden')) {
+      modalBackdrop.classList.remove('is-hidden');
       bodyPaddingToggle();
-    }, 250);
-  }
+   }
+   clearPopups();
+   setTimeout(function () {
+      document.getElementById(id).style.display = 'block';
+      setTimeout(function () {
+         document.getElementById(id).classList.remove('is-hidden');
+      }, 50);
+   }, 250);
+}
 
-  function toggleModal() {
-    refs.modal.forEach(modalClass => {
-      modalClass.scrollTo({ top: 0, behavior: 'smooth' });
-      modalClass.classList.toggle("is-hidden");
-    });
-  }
+//POPUP CLOSE FUNCTION
+function modalClose() {
+   modalBackdrop.classList.add('is-hidden');
+   clearPopups();
+   setTimeout(function () {
+      bodyPaddingToggle();
+   }, 250);
+}
 
-  function bodyPaddingToggle() {
-    refs.body.classList.toggle("lock");
-    refs.modalPaddingElements.forEach(modalPaddingElements => {
-      if (refs.body.classList.contains('lock')) {
-        refs.body.style.paddingRight = refs.bodyPadding + 'px';
-        modalPaddingElements.style.paddingRight = refs.bodyPadding + 'px';
+//RESET OLL SETTINGS TO DEFAULT
+function clearPopups() {
+   allPopups.forEach(popup => {
+      popup.classList.add('is-hidden');
+      setTimeout(function () {
+         popup.style.display = 'none';
+      }, 240);
+   });
+}
+
+//SCROLL BAR MODIFY
+function bodyPaddingToggle() {
+   body.classList.toggle('lock');
+   modalPaddingElements.forEach(modalPaddingElements => {
+      if (body.classList.contains('lock')) {
+         body.style.paddingRight = bodyPadding + 'px';
+         modalPaddingElements.style.paddingRight = bodyPadding + 'px';
+      } else {
+         body.style.paddingRight = '0px';
+         modalPaddingElements.style.paddingRight = '0px';
       }
-      else {
-        refs.body.style.paddingRight = '0px';
-        modalPaddingElements.style.paddingRight = '0px';
-      }
-    });
-  }
-
-})();
+   });
+}
