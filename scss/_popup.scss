@@ -48,7 +48,6 @@
    transition: transform 300ms var(--cubic), opacity 300ms var(--cubic), visibility 300ms var(--cubic);
 
    &.is-hidden {
-      position: absolute;
       visibility: hidden;
       opacity: 0;
       pointer-events: none;

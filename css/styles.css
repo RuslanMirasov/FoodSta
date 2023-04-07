@@ -793,7 +793,7 @@ body.lock {
 }
 
 .label--checkbox .label__text a {
-  color: var(--green);
+  color: var(--black);
   text-decoration: underline;
 }
 
@@ -813,7 +813,7 @@ body.lock {
   display: block;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--green);
+  border: 1px solid var(--black);
   background: rgba(0, 0, 0, 0);
   background-origin: border-box;
   border-radius: 2px;
@@ -827,10 +827,6 @@ body.lock {
 .checkbox:checked + .label__text:after {
   border: 1px solid var(--green) !important;
   background: var(--green);
-}
-
-.checkbox:focus + .label__text:after {
-  border: 1px solid var(--black);
 }
 
 .checkbox.red + .label__text:after {
@@ -902,7 +898,6 @@ body.lock {
   transition: transform 300ms var(--cubic), opacity 300ms var(--cubic), visibility 300ms var(--cubic);
 }
 .popup.is-hidden {
-  position: absolute;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
