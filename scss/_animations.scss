@@ -1,0 +1,47 @@
+/*rotate [animation: 4s linear 0s infinite alternate rotate] */
+@keyframes rotate {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.rotate-animation {
+   animation: 4s linear 0s infinite rotate;
+}
+
+/*standatr animations*/
+.animation {
+   opacity: 0;
+   transition: 0.8s cubic-bezier(0.14, 0.03, 0.02, 0.87) 0s;
+}
+
+.animation.anim--top {
+   transform: translate(0px, -20px);
+}
+
+.animation.anim--bottom {
+   transform: translate(0px, 20px);
+}
+
+.animation.anim--right {
+   transform: translate(20px, 0px);
+}
+
+.animation.anim--left {
+   transform: translate(-20px, 0px);
+}
+
+.animation.anim--bottom.animate,
+.animation.anim--right.animate,
+.animation.anim--top.animate,
+.animation.anim--left.animate {
+   transform: translate(0px, 0px);
+}
+
+.animation.animate {
+   opacity: 1;
+}

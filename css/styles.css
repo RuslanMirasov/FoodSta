@@ -670,7 +670,7 @@ body.lock {
 .label {
   display: block;
   position: relative;
-  margin-top: 48px;
+  margin-top: 46px;
   text-align: left;
 }
 
@@ -784,7 +784,7 @@ body.lock {
 
 /*checkbox*/
 .label--checkbox {
-  margin-top: 16px;
+  margin-top: 26px;
 }
 
 .label--checkbox .label__text {
@@ -916,7 +916,7 @@ textarea + .label__error {
 .popup {
   position: relative;
   width: 100%;
-  max-width: 458px;
+  max-width: 400px;
   height: auto;
   text-align: center;
   transform: translate(0px, 0px);
@@ -927,6 +927,10 @@ textarea + .label__error {
   visibility: visible;
   opacity: 1;
   pointer-events: all;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   transition: transform 300ms var(--cubic), opacity 300ms var(--cubic), visibility 300ms var(--cubic);
 }
 .popup.is-hidden {
@@ -981,4 +985,86 @@ textarea + .label__error {
   font-size: 16px;
   line-height: 1.4;
   margin-bottom: 32px;
+}
+
+#loading {
+  background: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  padding: 10px;
+}
+#loading.is-hidden {
+  transform: translate(0px, 0px);
+}
+#loading:before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  left: 20%;
+  top: 20%;
+  border-top: 3px solid var(--yellou);
+  border-left: 3px solid var(--yellou);
+  border-right: 3px solid var(--yellou);
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  border-radius: 100px;
+  -webkit-animation: 800ms linear 0s infinite rotate;
+          animation: 800ms linear 0s infinite rotate;
+}
+
+/*rotate [animation: 4s linear 0s infinite alternate rotate] */
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.rotate-animation {
+  -webkit-animation: 4s linear 0s infinite rotate;
+          animation: 4s linear 0s infinite rotate;
+}
+
+/*standatr animations*/
+.animation {
+  opacity: 0;
+  transition: 0.8s cubic-bezier(0.14, 0.03, 0.02, 0.87) 0s;
+}
+
+.animation.anim--top {
+  transform: translate(0px, -20px);
+}
+
+.animation.anim--bottom {
+  transform: translate(0px, 20px);
+}
+
+.animation.anim--right {
+  transform: translate(20px, 0px);
+}
+
+.animation.anim--left {
+  transform: translate(-20px, 0px);
+}
+
+.animation.anim--bottom.animate,
+.animation.anim--right.animate,
+.animation.anim--top.animate,
+.animation.anim--left.animate {
+  transform: translate(0px, 0px);
+}
+
+.animation.animate {
+  opacity: 1;
 }

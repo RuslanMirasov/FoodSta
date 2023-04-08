@@ -332,38 +332,24 @@
                   <!-- Phone -->
                   <label class="label">
                      <span class="label__text">Phone number</span>
-                     <input type="tel" class="input input--icon" name="phone" placeholder="+38(0__) ___ __ __" />
+                     <input type="tel" class="input input--icon required" name="phone" placeholder="+38(0__) ___ __ __" />
                      <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#phone"></use></svg>
                   </label>
                   <!-- Email -->
                   <label class="label">
                      <span class="label__text">Email</span>
-                     <input type="email" class="input" name="email" placeholder="example@gmail.com" />
+                     <input type="text" class="input input--icon required" name="email" placeholder="example@gmail.com" />
+                     <svg width="20" height="20" class="label__icon"><use href="./images/icons.svg#email"></use></svg>
                   </label>
-                  <!-- Comment -->
+                  <!-- Comment
                   <label class="label">
                      <span class="label__text">Comment</span>
                      <textarea name="comment" class="input input--textarea" placeholder="Text input"></textarea>
-                  </label>
+                  </label> -->
                   <!-- policy -->
                   <label class="label label--checkbox">
                      <input type="checkbox" class="checkbox agree" name="policy" value="agree" />
                      <span class="label__text"> I accept conditions of the <a href="">Privacy Policy</a> </span>
-                     <svg class="checkbox__icon" width="16" height="16"><use href="./images/icons.svg#checkbox"></use></svg>
-                  </label>
-                  <label class="label label--checkbox">
-                     <input type="checkbox" class="checkbox required" name="test" value="test1" />
-                     <span class="label__text">test1</span>
-                     <svg class="checkbox__icon" width="16" height="16"><use href="./images/icons.svg#checkbox"></use></svg>
-                  </label>
-                  <label class="label label--checkbox">
-                     <input type="checkbox" class="checkbox required agree" name="test" value="test2" />
-                     <span class="label__text">test2</span>
-                     <svg class="checkbox__icon" width="16" height="16"><use href="./images/icons.svg#checkbox"></use></svg>
-                  </label>
-                  <label class="label label--checkbox">
-                     <input type="checkbox" class="checkbox required agree" name="test" value="test3" />
-                     <span class="label__text">test3</span>
                      <svg class="checkbox__icon" width="16" height="16"><use href="./images/icons.svg#checkbox"></use></svg>
                   </label>
                   <!-- submit -->
@@ -372,9 +358,7 @@
             </div>
 
             <!-- LOADING -->
-            <div class="popup is-hidden" id="loading">
-               <b class="popup-title">LOADING...</b>
-            </div>
+            <div class="popup is-hidden" id="loading"></div>
 
             <!-- OK -->
             <div class="popup is-hidden" id="ok">

@@ -34,7 +34,7 @@
 .popup {
    position: relative;
    width: 100%;
-   max-width: 458px;
+   max-width: 400px;
    height: auto;
    text-align: center;
    transform: translate(0px, 0px);
@@ -45,6 +45,7 @@
    visibility: visible;
    opacity: 1;
    pointer-events: all;
+   user-select: none;
    transition: transform 300ms var(--cubic), opacity 300ms var(--cubic), visibility 300ms var(--cubic);
 
    &.is-hidden {
@@ -100,4 +101,30 @@
    font-size: 16px;
    line-height: 1.4;
    margin-bottom: 32px;
+}
+
+#loading {
+   background: rgba(0, 0, 0, 0);
+   box-shadow: none;
+   width: 100px;
+   height: 100px;
+   border-radius: 10px;
+   padding: 10px;
+   &.is-hidden {
+      transform: translate(0px, 0px);
+   }
+   &:before {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      left: 20%;
+      top: 20%;
+      border-top: 3px solid var(--yellou);
+      border-left: 3px solid var(--yellou);
+      border-right: 3px solid var(--yellou);
+      border-bottom: 3px solid rgba(0, 0, 0, 0);
+      border-radius: 100px;
+      animation: 800ms linear 0s infinite rotate;
+   }
 }

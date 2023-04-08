@@ -3,7 +3,7 @@ const forms = document.querySelectorAll('.form');
 const inputs = document.querySelectorAll('input, textarea');
 const agree = document.querySelectorAll('.agree');
 
-let errorText = 'Field must be not empty!';
+let errorText = 'Fill in this field!';
 
 //INPUT FOCUS CLEAR CONDITIONS
 inputs.forEach(field => {
@@ -58,7 +58,7 @@ forms.forEach(form => {
             //----- google Analitics targets
             //-----
             // ----
-         }, 2000);
+         }, 1000);
       }
       return false;
    });
@@ -100,6 +100,26 @@ function checkForm(formId) {
             );
          }
          checker = false;
+      } else {
+         if (
+            (requiredInput.name == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.value)) ||
+            (requiredInput.name == 'phone' && /[^0-9\+ ()\-]/.test(requiredInput.value))
+         ) {
+            if (requiredInput.name == 'email') {
+               errorText = 'Wrong E-mail format!';
+            }
+            if (requiredInput.name == 'phone') {
+               errorText = 'Wrong phone format!';
+            }
+            requiredInput.classList.add('red');
+            if (errors < 1) {
+               requiredLabel.insertAdjacentHTML(
+                  'beforeend',
+                  '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + errorText + '</div>'
+               );
+            }
+            checker = false;
+         }
       }
       if (requiredInput.classList.contains('checkbox') && !requiredInput.checked) {
          requiredInput.classList.add('red');
