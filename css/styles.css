@@ -689,6 +689,10 @@ body.lock {
   line-height: 1.4;
   font-weight: 500;
   color: var(--black);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 /*input text & textarea*/
@@ -822,11 +826,12 @@ body.lock {
   display: block;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--black);
-  background: rgba(0, 0, 0, 0);
+  /* border: 1px solid var(--white); */
+  background: var(--white);
   background-origin: border-box;
   border-radius: 2px;
   position: absolute;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
   left: 0px;
   top: 0px;
   cursor: pointer;
