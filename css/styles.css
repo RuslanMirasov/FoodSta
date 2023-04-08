@@ -858,11 +858,26 @@ body.lock {
 }
 
 .label__error {
-  display: block;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
   position: absolute;
-  left: 0px;
   top: 100%;
+  left: 14px;
   color: var(--red);
+}
+.label__error svg {
+  position: relative;
+  left: 0px;
+  top: -1px;
+  transform: translateY(0%);
+  fill: currentColor;
+  margin-right: 8px;
+}
+
+textarea + .label__error {
+  position: relative;
+  top: 0%;
 }
 
 /*-------------------- MODAL POPUP*/

@@ -13,7 +13,7 @@ popupOpen.forEach(modalBtn => {
    modalBtn.addEventListener('click', function (event) {
       event.preventDefault();
       let info = this.dataset.popup.split('|');
-      modalOpen(info[0], info[1], info[2], info[3], info[4]);
+      popup(info[0], info[1], info[2], info[3], info[4]);
    });
 });
 
@@ -23,7 +23,7 @@ popupClose.forEach(closeBtn => {
 });
 
 //POPUP OPEN FUNCTION
-function modalOpen(id, subject, title, subtitle, btn) {
+function popup(id, subject, title, subtitle, btn) {
    if (id == 'request') {
       if (subject != undefined) {
          document.querySelector('#request .subject').value = subject;
@@ -65,10 +65,11 @@ function modalClose() {
    clearPopups();
    setTimeout(function () {
       bodyPaddingToggle();
+      formsReset();
    }, 250);
 }
 
-//RESET OLL SETTINGS TO DEFAULT
+//RESET OLL POPUP SETTINGS TO DEFAULT
 function clearPopups() {
    allPopups.forEach(popup => {
       popup.classList.add('is-hidden');

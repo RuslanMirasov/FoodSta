@@ -1,60 +1,120 @@
-document.querySelectorAll('input').forEach(field => {
+'use strict';
+const forms = document.querySelectorAll('.form');
+const inputs = document.querySelectorAll('input, textarea');
+const agree = document.querySelectorAll('.agree');
+
+let errorText = 'Field must be not empty!';
+
+//INPUT FOCUS CLEAR CONDITIONS
+inputs.forEach(field => {
    field.addEventListener('focus', function () {
-      //let label = this.parentNode;
       if (this.classList.contains('red')) {
          this.classList.remove('red');
+         this.parentNode.childNodes.forEach(element => {
+            if (element.classList != undefined && element.classList.contains('label__error')) {
+               element.remove();
+            }
+         });
       }
    });
 });
 
-// //form send
-// jQuery(document).ready(function () {
-//    jQuery('.required').on('focus', function () {
-//       var focusLabel = jQuery(this).parents('.label');
-//       jQuery(this).removeClass('red');
-//       focusLabel.find('.error').remove();
-//    });
-//    jQuery('.agree').on('change', function () {
-//       var parentForm = jQuery(this).parents('form');
-//       var inputsCount = parentForm.find('input.agree').length;
-//       var checkedCount = parentForm.find('input.agree:checked').length;
-//       if (inputsCount == checkedCount) {
-//          parentForm.find('.button').removeAttr('disabled');
-//       } else {
-//          parentForm.find('.button').attr('disabled', 'disabled');
-//       }
-//    });
-//    jQuery('.form').on('submit', function (e) {
-//       e.preventDefault();
-//       var $sended_form = jQuery(this);
-//       var answer = checkForm($sended_form);
-//       if (answer != false) {
-//          popup('loading');
-//          var formData = new FormData($sended_form[0]);
-//          jQuery.ajax({
-//             type: 'POST',
-//             processData: false,
-//             contentType: false,
-//             url: root + '/sendmail/send.php',
-//             data: formData,
-//             success: function () {
-//                setTimeout(function () {
-//                   popup('thx');
-//                   //ga('send', 'event', ''+sbt, ''+sbt);
-//                   //yaCounterXXXXXXXXXXXXX.reachGoal(''+sbt);
-//                }, 1000);
-//             },
-//          });
-//       }
-//       return false;
-//    });
-// });
+//POLICY DISABLE
+agree.forEach(policy => {
+   policy.addEventListener('change', function () {
+      let disabled = true;
+      let agree = this.parentNode.parentNode.querySelectorAll('.agree');
+      let agreeLength = agree.length;
+      let agreeChecked = 0;
+      agree.forEach(agree => {
+         if (agree.checked) {
+            agreeChecked++;
+         }
+      });
+      if (agreeLength == agreeChecked) {
+         disabled = false;
+      }
+      this.parentNode.parentNode.childNodes.forEach(element => {
+         if (element.classList != undefined && element.classList.contains('button--submit')) {
+            element.disabled = disabled;
+         }
+      });
+   });
+});
 
-// /*form validation*/
+//FORMS SUBMIT
+forms.forEach(form => {
+   form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      let sendedForm = this;
+      let answer = checkForm(sendedForm);
+      if (answer != false) {
+         popup('loading');
+         setTimeout(function () {
+            popup('ok');
+            formsReset();
+            //-----
+            //-----
+            //----- google Analitics targets
+            //-----
+            // ----
+         }, 2000);
+      }
+      return false;
+   });
+});
+
+//OLL FORMS RESET
+function formsReset() {
+   forms.forEach(form => {
+      form.reset();
+      form.querySelectorAll('.label__error').forEach(errors => {
+         errors.remove();
+      });
+      form.querySelectorAll('.required').forEach(required => {
+         required.classList.remove('red');
+      });
+      if (form.querySelectorAll('.agree').length > 0) {
+         form.childNodes.forEach(element => {
+            if (element.classList != undefined && element.classList.contains('button--submit')) {
+               element.disabled = true;
+            }
+         });
+      }
+   });
+}
+
+//FORMS VALIDATION
+function checkForm(formId) {
+   let checker = true;
+   formId.querySelectorAll('.required').forEach(required => {
+      let requiredLabel = required.parentNode;
+      let errors = requiredLabel.querySelectorAll('.label__error').length;
+      let requiredInput = required;
+      if (requiredInput.value == '') {
+         requiredInput.classList.add('red');
+         if (errors < 1) {
+            requiredLabel.insertAdjacentHTML(
+               'beforeend',
+               '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + errorText + '</div>'
+            );
+         }
+         checker = false;
+      }
+      if (requiredInput.classList.contains('checkbox') && !requiredInput.checked) {
+         requiredInput.classList.add('red');
+         checker = false;
+      }
+   });
+
+   if (checker != true) {
+      return false;
+   }
+}
+
 // function checkForm(formId) {
 //    var $form = jQuery(formId);
 //    var checker = true;
-//    jQuery('.label').find('.error').remove();
 //    $form.find('.required').each(function () {
 //       var requiredLabel = jQuery(this).parents('.label');
 //       var requiredInput = jQuery(this);
