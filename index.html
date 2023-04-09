@@ -60,7 +60,7 @@
          <!--section Hero-->
          <section class="section section--hero">
             <div class="container">
-               <div class="title-wrapp">
+               <div class="title-wrapp animation anim--top">
                   <h1 class="title">Enjoy Your Favorite Food From Anywhere</h1>
                   <p>
                      With just a few clicks, you can have your favorite meals delivered straight to your doorstep, no matter where you are. Order now and enjoy a
@@ -321,7 +321,7 @@
                   Fill in the form and we will get <br />
                   back to you as soon as possible!
                </p>
-               <form action="#" method="POST" autocomplete="off" class="form" novalidate>
+               <form action="./send/send.php" method="POST" autocomplete="off" class="form" novalidate>
                   <input type="hidden" name="subject" class="subject" value="request form" />
                   <!-- name -->
                   <label class="label">
@@ -373,6 +373,15 @@
                </button>
                <b class="popup-title">Form was sended!</b>
                <p class="popup-subtitle">thank you for your massege.</p>
+            </div>
+
+            <!-- NOT OK -->
+            <div class="popup is-hidden" id="not-ok">
+               <button class="popup__close" data-popup-close>
+                  <svg width="12" height="12"><use href="./images/icons.svg#close"></use></svg>
+               </button>
+               <b class="popup-title">Error <span data-errCode>404</span></b>
+               <p class="popup-subtitle" data-errText>thank you for your massege.</p>
             </div>
          </div>
       </div>

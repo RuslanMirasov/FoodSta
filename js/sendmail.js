@@ -3,8 +3,6 @@ const forms = document.querySelectorAll('.form');
 const inputs = document.querySelectorAll('input, textarea');
 const agree = document.querySelectorAll('.agree');
 
-let errorText = 'Fill in this field!';
-
 //INPUT FOCUS CLEAR CONDITIONS
 inputs.forEach(field => {
    field.addEventListener('focus', function () {
@@ -34,11 +32,7 @@ agree.forEach(policy => {
       if (agreeLength == agreeChecked) {
          disabled = false;
       }
-      this.parentNode.parentNode.childNodes.forEach(element => {
-         if (element.classList != undefined && element.classList.contains('button--submit')) {
-            element.disabled = disabled;
-         }
-      });
+      this.parentNode.parentNode.querySelector('[type=submit]').disabled = disabled;
    });
 });
 
@@ -46,10 +40,10 @@ agree.forEach(policy => {
 forms.forEach(form => {
    form.addEventListener('submit', function (event) {
       event.preventDefault();
-      let sendedForm = this;
-      let answer = checkForm(sendedForm);
+      let answer = checkForm(this);
       if (answer != false) {
          popup('loading');
+
          setTimeout(function () {
             popup('ok');
             formsReset();
@@ -75,11 +69,7 @@ function formsReset() {
          required.classList.remove('red');
       });
       if (form.querySelectorAll('.agree').length > 0) {
-         form.childNodes.forEach(element => {
-            if (element.classList != undefined && element.classList.contains('button--submit')) {
-               element.disabled = true;
-            }
-         });
+         form.querySelector('[type=submit]').disabled = true;
       }
    });
 }
