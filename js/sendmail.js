@@ -71,7 +71,7 @@ function formsReset() {
       form.querySelectorAll('.label__error').forEach(errors => {
          errors.remove();
       });
-      form.querySelectorAll('.required').forEach(required => {
+      form.querySelectorAll('[required]').forEach(required => {
          required.classList.remove('red');
       });
       if (form.querySelectorAll('.agree').length > 0) {
@@ -87,80 +87,51 @@ function formsReset() {
 //FORMS VALIDATION
 function checkForm(formId) {
    let checker = true;
-   formId.querySelectorAll('.required').forEach(required => {
+   formId.querySelectorAll('[required]').forEach(required => {
       let requiredLabel = required.parentNode;
-      let errors = requiredLabel.querySelectorAll('.label__error').length;
       let requiredInput = required;
       if (requiredInput.value == '') {
-         requiredInput.classList.add('red');
-         if (errors < 1) {
-            requiredLabel.insertAdjacentHTML(
-               'beforeend',
-               '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + errorText + '</div>'
-            );
-         }
-         checker = false;
+         addError(requiredLabel, 'The field must not be empty!');
       } else {
-         if (
-            (requiredInput.name == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.value)) ||
-            (requiredInput.name == 'phone' && /[^0-9\+ ()\-]/.test(requiredInput.value))
-         ) {
-            if (requiredInput.name == 'email') {
-               errorText = 'Wrong E-mail format!';
+         //type email
+         if (requiredInput.type == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.value)) {
+            addError(requiredLabel, 'Wrong E-mail format!');
+         }
+         //type tel
+         if (requiredInput.type == 'tel' && /[^0-9\+ ()\-]/.test(requiredInput.value)) {
+            addError(requiredLabel, 'Wrong phone format!');
+         }
+         //type number
+         if (requiredInput.type == 'number') {
+            if (requiredInput.min && Number(requiredInput.value) < Number(requiredInput.min)) {
+               addError(requiredLabel, `Minimal number ${requiredInput.min}`);
             }
-            if (requiredInput.name == 'phone') {
-               errorText = 'Wrong phone format!';
+            if (requiredInput.max && Number(requiredInput.value) > Number(requiredInput.max)) {
+               addError(requiredLabel, `Maximal number ${requiredInput.max}`);
             }
-            requiredInput.classList.add('red');
-            if (errors < 1) {
-               requiredLabel.insertAdjacentHTML(
-                  'beforeend',
-                  '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + errorText + '</div>'
-               );
-            }
-            checker = false;
          }
       }
-      if (requiredInput.classList.contains('checkbox') && !requiredInput.checked) {
+      //type checkbox & radio
+      if ((requiredInput.type == 'checkbox' && !requiredInput.checked) || (requiredInput.type == 'radio' && !requiredInput.checked)) {
+         checkerFalse();
+      }
+
+      //ERROR TEXT CREATE
+      function addError(correntLabel, text) {
+         let errors = correntLabel.querySelectorAll('.label__error').length;
+         if (errors < 1) {
+            correntLabel.insertAdjacentHTML(
+               'beforeend',
+               '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + text + '</div>'
+            );
+         }
+         checkerFalse();
+      }
+      //ADD "RED" CLASS TO INPUTS
+      function checkerFalse() {
          requiredInput.classList.add('red');
          checker = false;
       }
    });
-
-   if (checker != true) {
-      return false;
-   }
+   return checker;
 }
-
-// function checkForm(formId) {
-//    var $form = jQuery(formId);
-//    var checker = true;
-//    $form.find('.required').each(function () {
-//       var requiredLabel = jQuery(this).parents('.label');
-//       var requiredInput = jQuery(this);
-//       var errorText = 'Поле не должно быть пустым';
-//       if (requiredInput.val() == '') {
-//          requiredInput.addClass('red');
-//          requiredLabel.append("<div class='error'>" + errorText + '</div>');
-//          checker = false;
-//       } else {
-//          if (
-//             (requiredInput.attr('name') == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.val())) ||
-//             (requiredInput.attr('name') == 'phone' && /[^0-9\+ ()\-]/.test(requiredInput.val()))
-//          ) {
-//             if (requiredInput.attr('name') == 'email') {
-//                errorText = 'Проверьте адрес электронной почты';
-//             }
-//             if (requiredInput.attr('name') == 'phone') {
-//                errorText = 'Не верный формат телефона';
-//             }
-//             requiredInput.addClass('red');
-//             requiredLabel.append("<div class='error'>" + errorText + '</div>');
-//             checker = false;
-//          }
-//       }
-//    });
-//    if (checker != true) {
-//       return false;
-//    }
-// }

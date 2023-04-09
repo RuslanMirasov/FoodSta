@@ -321,31 +321,37 @@
                   Fill in the form and we will get <br />
                   back to you as soon as possible!
                </p>
-               <form action="#" method="POST" autocomplete="off" class="form">
+               <form action="#" method="POST" autocomplete="off" class="form" novalidate>
                   <input type="hidden" name="subject" class="subject" value="request form" />
                   <!-- name -->
                   <label class="label">
                      <span class="label__text">Name</span>
-                     <input type="text" class="input input--icon required" name="name" placeholder="Your name" />
+                     <input type="text" class="input input--icon" name="name" placeholder="Your name" required />
+                     <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#name"></use></svg>
+                  </label>
+                  <!-- number -->
+                  <label class="label">
+                     <span class="label__text">Number from 10 to 20</span>
+                     <input type="number" class="input input--icon" name="name" placeholder="Text from 10 to 20" required min="10" max="20" />
                      <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#name"></use></svg>
                   </label>
                   <!-- Phone -->
                   <label class="label">
                      <span class="label__text">Phone number</span>
-                     <input type="tel" class="input input--icon required" name="phone" placeholder="+38(0__) ___ __ __" />
+                     <input type="tel" class="input input--icon" name="phone" placeholder="+38(0__) ___ __ __" required />
                      <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#phone"></use></svg>
                   </label>
                   <!-- Email -->
                   <label class="label">
                      <span class="label__text">Email</span>
-                     <input type="text" class="input input--icon required" name="email" placeholder="example@gmail.com" />
+                     <input type="email" class="input input--icon" name="email" placeholder="example@gmail.com" required />
                      <svg width="20" height="20" class="label__icon"><use href="./images/icons.svg#email"></use></svg>
                   </label>
-                  <!-- Comment
+                  <!-- Comment-->
                   <label class="label">
                      <span class="label__text">Comment</span>
-                     <textarea name="comment" class="input input--textarea" placeholder="Text input"></textarea>
-                  </label> -->
+                     <textarea name="comment" class="input input--textarea" placeholder="Text input" required></textarea>
+                  </label>
                   <!-- policy -->
                   <label class="label label--checkbox">
                      <input type="checkbox" class="checkbox agree" name="policy" value="agree" />
