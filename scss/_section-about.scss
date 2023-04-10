@@ -3,7 +3,6 @@
 .section--about {
    position: relative;
    z-index: 1;
-   background: var(--yellou);
    @media screen and (max-width: 767px) {
       padding: 70px 0px;
       background: rgba(0, 0, 0, 0) url(../images/about_mobil.svg) no-repeat top center/100% 100%;
@@ -97,7 +96,16 @@
          position: absolute;
          left: 100%;
          top: 50%;
-         background: url('../images/section2_img.png') no-repeat center center/cover;
+         background: url('../images/aple.png') no-repeat center center/cover;
+      }
+      @media screen and (min-device-pixel-ratio: 2),
+         screen and (-webkit-min-device-pixel-ratio: 2),
+         screen and (min-resolution: 192dpi),
+         screen and (min-resolution: 2dppx) {
+         &:before,
+         &:after {
+            background: url('../images/aple@2x.png') no-repeat center center/cover;
+         }
       }
       &:before {
          width: 166px;

@@ -1,23 +1,19 @@
 /* ========== FAVORITES ( Ruslan ) ========== */
 
-.section--favorites .container {
-   box-sizing: border-box;
-   text-align: center;
+.section--favorites {
+   .title-wrapp {
+      text-align: center;
+   }
 }
-
-.section--favorites .subtitle {
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 1.2;
-   margin-top: 20px;
-}
-
 .favorites {
    display: flex;
    width: 100%;
    flex-wrap: wrap;
    list-style: none;
    padding: 0;
+   margin-left: auto;
+   margin-right: auto;
+   gap: 20px;
 }
 
 .favorites__item .link {
@@ -30,10 +26,6 @@
    width: 100%;
    transition: border 250ms var(--cubic);
    border-radius: 50%;
-}
-.favorites__item .link:hover,
-.favorites__item .link:focus {
-   border: 16px solid var(--lime);
 }
 
 .favorites__item img {
@@ -51,11 +43,11 @@
    }
    .favorites {
       max-width: 280px;
-      margin: -10px auto;
+      margin-top: 60px;
    }
    .favorites__item {
       width: 100%;
-      margin: 10px auto;
+      margin: 0px auto;
       display: none;
    }
    .favorites__item:nth-child(1),
@@ -77,13 +69,12 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
    .favorites {
       max-width: 704px;
+      margin-top: 60px;
    }
    .favorites__item {
-      width: calc((100% - 32px) / 2);
+      width: 336px;
    }
-   .favorites__item:nth-child(2n) {
-      margin-right: 0px;
-   }
+
    .favorites__item .link {
       padding: 20px;
       border: 14px solid var(--yellou);
@@ -96,30 +87,18 @@
 
 /*----- FROM TABLET TO INFINITY*/
 @media screen and (min-width: 768px) {
+   .favorites {
+      gap: 32px;
+   }
    .section--favorites {
       padding: 100px 0px;
-   }
-   .favorites {
-      margin: -16px auto;
-   }
-   .favorites__item {
-      margin-top: 16px;
-      margin-bottom: 16px;
-      margin-right: 32px;
-   }
-}
-
-/*----- FROM 0 TO DESCTOP*/
-@media screen and (max-width: 1279px) {
-   .section--favorites .subtitle {
-      margin-bottom: 60px;
    }
 }
 
 /*----- FROM DESCTOP TO INFINITY*/
 @media screen and (min-width: 1280px) {
-   .section--favorites .subtitle {
-      margin-bottom: 40px;
+   .favorites {
+      margin-top: 40px;
    }
    .favorites__item {
       width: calc((100% - 32px * 2) / 3);
