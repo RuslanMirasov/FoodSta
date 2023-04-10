@@ -1,0 +1,88 @@
+.section--subscribe {
+   @media screen and (max-width: 767px) {
+      padding: 20px 0px 60px 0px;
+      margin-top: -64px;
+   }
+   @media screen and (min-width: 768px) and (max-width: 1279px) {
+      padding: 20px 0px 100px 0px;
+      margin-top: -90px;
+   }
+   @media screen and (min-width: 1280px) {
+      padding: 20px 0px 60px 0px;
+      margin-top: -80px;
+   }
+   .container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      align-items: center;
+      @media screen and (max-width: 767px) {
+         justify-content: center;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1279px) {
+         justify-content: flex-end;
+      }
+   }
+}
+
+.banan {
+   &.banan--mobil {
+      display: block;
+      margin-bottom: 16px;
+      @media screen and (min-width: 768px) {
+         display: none;
+      }
+   }
+   &.banan--desctop {
+      display: none;
+      @media screen and (min-width: 768px) {
+         display: block;
+         width: 300px;
+         height: auto;
+         margin-bottom: 20px;
+      }
+      @media screen and (min-width: 1280px) {
+         width: 590px;
+         margin-bottom: 0px;
+         order: 2;
+         margin-left: auto;
+      }
+   }
+}
+
+.subscribe__info {
+   @media screen and (max-width: 1279px) {
+      width: 100%;
+   }
+   @media screen and (min-width: 1280px) {
+      width: auto;
+   }
+   .form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 40px;
+      .label {
+         width: 100%;
+         @media screen and (min-width: 768px) {
+            max-width: 395px;
+            .input {
+               box-shadow: none;
+               &::placeholder {
+                  color: var(--black);
+               }
+            }
+         }
+      }
+      .button {
+         margin-top: 20px;
+         @media screen and (min-width: 768px) {
+            margin-top: 0px;
+            margin-left: 22px;
+         }
+      }
+      @media screen and (min-width: 768px) {
+         justify-content: flex-start;
+      }
+   }
+}
