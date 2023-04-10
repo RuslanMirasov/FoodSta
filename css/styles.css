@@ -1099,21 +1099,21 @@ body.lock {
 .subscribe__info .form .label {
   width: 100%;
 }
+.subscribe__info .form .label .input {
+  box-shadow: none;
+}
+.subscribe__info .form .label .input::-moz-placeholder {
+  color: var(--black);
+}
+.subscribe__info .form .label .input:-ms-input-placeholder {
+  color: var(--black);
+}
+.subscribe__info .form .label .input::placeholder {
+  color: var(--black);
+}
 @media screen and (min-width: 768px) {
   .subscribe__info .form .label {
     max-width: 395px;
-  }
-  .subscribe__info .form .label .input {
-    box-shadow: none;
-  }
-  .subscribe__info .form .label .input::-moz-placeholder {
-    color: var(--black);
-  }
-  .subscribe__info .form .label .input:-ms-input-placeholder {
-    color: var(--black);
-  }
-  .subscribe__info .form .label .input::placeholder {
-    color: var(--black);
   }
 }
 .subscribe__info .form .button {

@@ -64,14 +64,14 @@
       margin-top: 40px;
       .label {
          width: 100%;
+         .input {
+            box-shadow: none;
+            &::placeholder {
+               color: var(--black);
+            }
+         }
          @media screen and (min-width: 768px) {
             max-width: 395px;
-            .input {
-               box-shadow: none;
-               &::placeholder {
-                  color: var(--black);
-               }
-            }
          }
       }
       .button {
