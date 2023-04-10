@@ -197,16 +197,19 @@
    flex-wrap: wrap;
    align-items: center;
    position: absolute;
-   top: 100%;
+   top: 104%;
    left: 14px;
+   font-size: 13px;
+   line-height: 18px;
    color: var(--red);
    svg {
       position: relative;
+      width: 12px;
       left: 0px;
       top: -1px;
       transform: translateY(0%);
       fill: currentColor;
-      margin-right: 8px;
+      margin-right: 4px;
    }
 }
 

@@ -55,7 +55,9 @@ function mainPaddingTop() {
 scrollLinks.forEach(link => {
    link.addEventListener('click', function (event) {
       event.preventDefault();
+      console.log(document.querySelector('.' + this.dataset.scrollto).offsetTop);
       let distance = document.querySelector('.' + this.dataset.scrollto).offsetTop - header.getBoundingClientRect().height;
+
       window.scrollTo({ top: distance, left: 0, behavior: 'smooth' });
       if (menu.classList.contains('is-open')) {
          menuToggle();

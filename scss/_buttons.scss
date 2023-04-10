@@ -1,5 +1,18 @@
 /*----------------------------------------------- BUTTONS*/
 
+.forBtn {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 24px;
+   &.ta--c {
+      justify-content: center;
+   }
+   &.ta--r {
+      justify-content: flex-end;
+   }
+}
+
 .button {
    display: inline-block;
    flex-wrap: wrap;

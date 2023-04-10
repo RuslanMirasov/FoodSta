@@ -4,23 +4,14 @@
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
-   width: 48px;
-   height: 40px;
    top: 50%;
    transform: translate(0%, -50%);
    background: var(--white);
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
-   border-radius: 8px;
    z-index: 2;
    color: var(--black);
    transition: 250ms var(--cubic);
    cursor: pointer;
-   &.slider-arrow--left {
-      left: -40px;
-   }
-   &.slider-arrow--right {
-      right: -40px;
-   }
    svg {
       fill: currentColor;
    }
@@ -29,5 +20,32 @@
    }
    &:active {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
+   }
+
+   @media screen and (max-width: 1279px) {
+      width: 34px;
+      height: 28px;
+      border-radius: 4px;
+      svg {
+         width: 11.49px;
+         height: 20.34px;
+      }
+      &.slider-arrow--left {
+         left: -32px;
+      }
+      &.slider-arrow--right {
+         right: -32px;
+      }
+   }
+   @media screen and (min-width: 1280px) {
+      width: 48px;
+      height: 40px;
+      border-radius: 8px;
+      &.slider-arrow--left {
+         left: -42px;
+      }
+      &.slider-arrow--right {
+         right: -42px;
+      }
    }
 }
