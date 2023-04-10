@@ -919,6 +919,10 @@ body.lock {
   }
 }
 
+.customers {
+  margin-top: 32px;
+}
+
 /*----------------------------------------------- FOOTER*/
 .footer {
   width: 100%;
