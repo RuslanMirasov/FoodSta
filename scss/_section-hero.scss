@@ -1,6 +1,10 @@
 /*----------------------------------------------- SECTION HERO */
 .section--hero {
-   padding-bottom: 40px;
+   position: relative;
+   padding-bottom: 80px;
+   padding-top: 50px;
+   // padding-bottom: 40px;
+   z-index: 2;
 }
 .section--hero .container {
    display: flex;
@@ -47,6 +51,25 @@
    height: 100%;
    border-radius: 500px;
    overflow: hidden;
+   .swiper-slide {
+      img {
+         display: block;
+         position: relative;
+         transform: rotate(0deg);
+         transition: 800ms var(--cubic);
+         border-radius: 50%;
+      }
+      &.swiper-slide-prev {
+         img {
+            transform: rotate(-50deg);
+         }
+      }
+      &.swiper-slide-next {
+         img {
+            transform: rotate(50deg);
+         }
+      }
+   }
 }
 
 .section--hero .title-wrapp > * {

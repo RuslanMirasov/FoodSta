@@ -38,12 +38,11 @@ agree.forEach(policy => {
 
 //FORMS SUBMIT
 forms.forEach(form => {
-   form.addEventListener('submit', function (event) {
+   form.addEventListener('submit', async function (event) {
       event.preventDefault();
       let answer = checkForm(this);
       if (answer != false) {
          popup('loading');
-
          setTimeout(function () {
             popup('ok');
             formsReset();

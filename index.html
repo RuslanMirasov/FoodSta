@@ -9,6 +9,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
       <link rel="stylesheet" href="./css/normalize.css" />
       <link rel="stylesheet" href="./css/styles.min.css" />
       <title>FoodSta</title>
@@ -60,7 +61,7 @@
          <!--section Hero-->
          <section class="section section--hero">
             <div class="container">
-               <div class="title-wrapp animation anim--top">
+               <div class="title-wrapp">
                   <h1 class="title">Enjoy Your Favorite Food From Anywhere</h1>
                   <p>
                      With just a few clicks, you can have your favorite meals delivered straight to your doorstep, no matter where you are. Order now and enjoy a
@@ -74,8 +75,8 @@
                      data-col="1"
                      data-coltab="1"
                      data-colmob="1"
-                     data-margin="0"
-                     data-marginmobil="0"
+                     data-margin="50"
+                     data-marginmobil="20"
                      data-effect="slide"
                      data-autoplay="0"
                      data-move="true"
@@ -94,8 +95,12 @@
                            </div>
                         </div>
                      </div>
-                     <div class="slider-arrow slider-arrow--left outside foodstaSlider_prev"></div>
-                     <div class="slider-arrow slider-arrow--right outside foodstaSlider_next"></div>
+                     <div class="slider-arrow slider-arrow--left outside foodstaSlider_prev">
+                        <svg width="17" height="30"><use href="./images/icons.svg#arr_left"></use></svg>
+                     </div>
+                     <div class="slider-arrow slider-arrow--right outside foodstaSlider_next">
+                        <svg width="17" height="30"><use href="./images/icons.svg#arr_right"></use></svg>
+                     </div>
                   </div>
                </div>
             </div>
@@ -321,45 +326,25 @@
                   Fill in the form and we will get <br />
                   back to you as soon as possible!
                </p>
-               <form action="./send/send.php" method="POST" autocomplete="off" class="form" novalidate>
-                  <input type="hidden" name="subject" class="subject" value="request form" />
+               <form action="#" method="POST" class="form" autocomplete="off" novalidate>
+                  <input type="hidden" name="subject" class="subject" value="Order Form" />
                   <!-- name -->
                   <label class="label">
                      <span class="label__text">Name</span>
-                     <input type="text" class="input input--icon" name="name" placeholder="Your name" required />
-                     <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#name"></use></svg>
-                  </label>
-                  <!-- number -->
-                  <label class="label">
-                     <span class="label__text">Number from 10 to 20</span>
-                     <input type="number" class="input input--icon" name="name" placeholder="Text from 10 to 20" required min="10" max="20" />
-                     <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#name"></use></svg>
+                     <input type="text" class="input" name="name" placeholder="Your name" required />
                   </label>
                   <!-- Phone -->
                   <label class="label">
                      <span class="label__text">Phone number</span>
-                     <input type="tel" class="input input--icon" name="phone" placeholder="+38(0__) ___ __ __" required />
-                     <svg width="16" height="16" class="label__icon"><use href="./images/icons.svg#phone"></use></svg>
+                     <input type="tel" class="input" name="phone" placeholder="+38(0__) ___ __ __" required />
                   </label>
                   <!-- Email -->
                   <label class="label">
                      <span class="label__text">Email</span>
-                     <input type="email" class="input input--icon" name="email" placeholder="example@gmail.com" required />
-                     <svg width="20" height="20" class="label__icon"><use href="./images/icons.svg#email"></use></svg>
-                  </label>
-                  <!-- Comment-->
-                  <label class="label">
-                     <span class="label__text">Comment</span>
-                     <textarea name="comment" class="input input--textarea" placeholder="Text input" required></textarea>
-                  </label>
-                  <!-- policy -->
-                  <label class="label label--checkbox">
-                     <input type="checkbox" class="checkbox agree" name="policy" value="agree" />
-                     <span class="label__text"> I accept conditions of the <a href="">Privacy Policy</a> </span>
-                     <svg class="checkbox__icon" width="16" height="16"><use href="./images/icons.svg#checkbox"></use></svg>
+                     <input type="email" class="input" name="email" placeholder="example@gmail.com" required />
                   </label>
                   <!-- submit -->
-                  <button type="submit" class="button button--border medium button--submit" disabled>Send</button>
+                  <button type="submit" class="button button--border medium button--submit">Send</button>
                </form>
             </div>
 
@@ -386,9 +371,10 @@
          </div>
       </div>
       <!-- MODAL POPUP END-->
-
+      <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
       <script src="./js/modal.js"></script>
       <script src="./js/sendmail.js"></script>
+      <script src="./js/sliders.js"></script>
       <script src="./js/scripts.js"></script>
    </body>
 </html>
