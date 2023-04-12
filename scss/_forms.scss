@@ -60,12 +60,17 @@
       transition: opacity 250ms var(--cubic);
       opacity: 1;
    }
-   &:focus,
-   &:valid {
+   &:focus {
       border: 1px solid var(--green);
       &::placeholder {
          opacity: 0;
       }
+      + .label__icon {
+         fill: var(--green);
+      }
+   }
+   &.valid {
+      border: 1px solid var(--green);
       + .label__icon {
          fill: var(--green);
       }
@@ -104,8 +109,7 @@
 }
 
 /*checkbox and radio*/
-.checkbox-wrapper,
-.radio-wrapper {
+.fieldset {
    display: flex;
    flex-wrap: wrap;
    position: relative;
@@ -114,7 +118,7 @@
    gap: 20px;
    .label {
       margin: 0;
-      width: 50%;
+      width: auto;
    }
    .label__text {
       display: block;
@@ -146,6 +150,10 @@
    }
 }
 
+.fieldset.fieldset--radio .label__text:after {
+   border-radius: 20px;
+}
+
 .checkbox,
 .radio {
    position: absolute;
@@ -156,21 +164,17 @@
    padding: 0;
    clip: rect(0 0 0 0);
    overflow: hidden;
-}
-
-.label--radio .label__text:after {
-   border-radius: 20px;
-}
-
-.checkbox:checked + .label__text:after,
-.radio:checked + .label__text:after {
-   border: 1px solid var(--green) !important;
-   background: var(--green);
-}
-
-.checkbox.red + .label__text:after,
-.radio.red + .label__text:after {
-   border: 1px solid var(--red);
+   &:checked {
+      + .label__text:after {
+         border: 1px solid var(--green) !important;
+         background: var(--green);
+      }
+   }
+   &.red {
+      + .label__text:after {
+         border: 1px solid var(--red);
+      }
+   }
 }
 
 .checkbox__icon,

@@ -25,25 +25,37 @@ popupClose.forEach(closeBtn => {
 //POPUP OPEN FUNCTION
 function popup(id, subject, title, subtitle, btn) {
    if (id == 'request') {
-      if (subject != undefined) {
-         document.querySelector('#request .subject').value = subject;
-      } else {
-         document.querySelector('#request .subject').value = defaultPopupInfo[1];
+      const popupSubject = document.querySelector('#request .subject');
+      const popupTitle = document.querySelector('#request .popup-title');
+      const popupSubtitle = document.querySelector('#request .popup-subtitle');
+      const popupButton = document.querySelector('#request .button[type="submit"]');
+      if (popupSubject !== null) {
+         if (subject != undefined) {
+            document.querySelector('#request .subject').value = subject;
+         } else {
+            document.querySelector('#request .subject').value = defaultPopupInfo[1];
+         }
       }
-      if (title != undefined) {
-         document.querySelector('#request .popup-title').innerHTML = title;
-      } else {
-         document.querySelector('#request .popup-title').innerHTML = defaultPopupInfo[2];
+      if (popupTitle !== null) {
+         if (title != undefined) {
+            document.querySelector('#request .popup-title').innerHTML = title;
+         } else {
+            document.querySelector('#request .popup-title').innerHTML = defaultPopupInfo[2];
+         }
       }
-      if (subtitle != undefined) {
-         document.querySelector('#request .popup-subtitle').innerHTML = subtitle;
-      } else {
-         document.querySelector('#request .popup-subtitle').innerHTML = defaultPopupInfo[3];
+      if (popupSubtitle !== null) {
+         if (subtitle != undefined) {
+            document.querySelector('#request .popup-subtitle').innerHTML = subtitle;
+         } else {
+            document.querySelector('#request .popup-subtitle').innerHTML = defaultPopupInfo[3];
+         }
       }
-      if (btn != undefined) {
-         document.querySelector('#request .button[type="submit"]').innerHTML = btn;
-      } else {
-         document.querySelector('#request .button[type="submit"]').innerHTML = defaultPopupInfo[4];
+      if (popupButton !== null) {
+         if (btn != undefined) {
+            document.querySelector('#request .button[type="submit"]').innerHTML = btn;
+         } else {
+            document.querySelector('#request .button[type="submit"]').innerHTML = defaultPopupInfo[4];
+         }
       }
    }
    if (modalBackdrop.classList.contains('is-hidden')) {

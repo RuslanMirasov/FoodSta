@@ -380,10 +380,10 @@
                   <svg width="12" height="12"><use href="./images/icons.svg#close"></use></svg>
                </button>
                <b class="popup-title">Order Form</b>
-               <p class="popup-subtitle">
+               <!-- <p class="popup-subtitle">
                   Fill in the form and we will get <br />
                   back to you as soon as possible!
-               </p>
+               </p> -->
                <form action="#" method="POST" class="form" autocomplete="off" novalidate>
                   <input type="hidden" name="subject" class="subject" value="Order Form" />
                   <!-- name -->
@@ -401,38 +401,6 @@
                      <span class="label__text">Email</span>
                      <input type="email" class="input" name="email" placeholder="example@gmail.com" required />
                   </label>
-                  <!-- Number -->
-                  <label class="label">
-                     <span class="label__text">Number (10-50)</span>
-                     <input type="number" class="input" name="number" placeholder="10-50" min="10" max="50" required />
-                  </label>
-                  <!-- checkbox -->
-                  <fieldset class="checkbox-wrapper">
-                     <label class="label">
-                        <span class="label__text">HTML</span>
-                        <input type="checkbox" class="checkbox" name="skills" value="HTML" required />
-                     </label>
-                     <label class="label">
-                        <span class="label__text">CSS</span>
-                        <input type="checkbox" class="checkbox" name="skills" value="CSS" required />
-                     </label>
-                     <label class="label">
-                        <span class="label__text">Javascript</span>
-                        <input type="checkbox" class="checkbox" name="skills" value="Javascript" required />
-                     </label>
-                  </fieldset>
-                  <!-- radio -->
-                  <fieldset class="radio-wrapper">
-                     <label class="label">
-                        <span class="label__text">Male</span>
-                        <input type="radio" class="radio" name="sex" value="Male" />
-                     </label>
-                     <label class="label">
-                        <span class="label__text">Female</span>
-                        <input type="radio" class="radio" name="sex" value="Female" />
-                     </label>
-                  </fieldset>
-
                   <!-- submit -->
                   <button type="submit" class="button button--border medium button--submit">Send</button>
                </form>

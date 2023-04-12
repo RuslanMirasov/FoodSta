@@ -13,13 +13,29 @@ const errorPhoneInput = 'Wrong phone format!';
 const errorMinNumber = 'The minimum value is';
 const errorMaxNumber = 'The maximum value is';
 
-//INPUT CLEAR ON FOCUS
 inputs.forEach(input => {
+   let parentContainer = input.closest('.label');
+   if (input.type === 'checkbox' || input.type === 'radio') {
+      parentContainer = input.closest('.fieldset');
+   }
+
+   //INPUT CLEAR ON FOCUS
    input.addEventListener('focus', function () {
-      if (this.classList.contains('red')) {
-         this.classList.remove('red');
-         if (addErrorText == true) {
-            this.closest('.label').querySelector('.label__error').remove();
+      const redInputs = parentContainer.querySelectorAll('.red');
+      redInputs.forEach(redInput => {
+         redInput.classList.remove('red');
+         if (addErrorText == true && redInput.closest('.label').querySelector('.label__error') !== null) {
+            redInput.closest('.label').querySelector('.label__error').remove();
+         }
+      });
+   });
+
+   //INPUT VALIDATE ON BLUR
+   input.addEventListener('blur', function () {
+      if (this.value !== '') {
+         let inputChecker = checkForm(parentContainer);
+         if (inputChecker === true) {
+            this.classList.add('valid');
          }
       }
    });
@@ -51,6 +67,11 @@ forms.forEach(form => {
       let answer = checkForm(this);
       if (answer != false) {
          popup('loading');
+         const formData = new FormData(this);
+         let dataArray = {};
+         formData.forEach((value, key) => (dataArray[key] = value));
+         let jsonData = JSON.stringify(dataArray);
+         console.log(jsonData);
          setTimeout(function () {
             popup('ok');
             formsReset();
@@ -101,9 +122,23 @@ function checkForm(formId) {
             }
          }
       }
-      //type checkbox & radio
-      if ((requiredInput.type == 'checkbox' && !requiredInput.checked) || (requiredInput.type == 'radio' && !requiredInput.checked)) {
+      //type checkbox
+      if (requiredInput.type == 'checkbox' && !requiredInput.checked) {
          checkerFalse();
+      }
+      //type radio
+      if (requiredInput.type == 'radio' && !requiredInput.checked) {
+         const radioList = formId.querySelectorAll('[name="' + requiredInput.name + '"]');
+         let isChecked = false;
+         for (let i = 0; i < radioList.length; i++) {
+            if (radioList[i].checked === true) {
+               isChecked = true;
+               break;
+            }
+         }
+         if (isChecked === false) {
+            checkerFalse();
+         }
       }
 
       //ERROR TEXT CREATE

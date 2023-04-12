@@ -1443,19 +1443,25 @@ body.lock {
   transition: opacity 250ms var(--cubic);
   opacity: 1;
 }
-.input:focus, .input:valid {
+.input:focus {
   border: 1px solid var(--green);
 }
-.input:focus::-moz-placeholder, .input:valid::-moz-placeholder {
+.input:focus::-moz-placeholder {
   opacity: 0;
 }
-.input:focus:-ms-input-placeholder, .input:valid:-ms-input-placeholder {
+.input:focus:-ms-input-placeholder {
   opacity: 0;
 }
-.input:focus::placeholder, .input:valid::placeholder {
+.input:focus::placeholder {
   opacity: 0;
 }
-.input:focus + .label__icon, .input:valid + .label__icon {
+.input:focus + .label__icon {
+  fill: var(--green);
+}
+.input.valid {
+  border: 1px solid var(--green);
+}
+.input.valid + .label__icon {
   fill: var(--green);
 }
 .input:-webkit-autofill {
@@ -1483,8 +1489,7 @@ body.lock {
 }
 
 /*checkbox and radio*/
-.checkbox-wrapper,
-.radio-wrapper {
+.fieldset {
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -1492,13 +1497,11 @@ body.lock {
   align-items: center;
   gap: 20px;
 }
-.checkbox-wrapper .label,
-.radio-wrapper .label {
+.fieldset .label {
   margin: 0;
-  width: 50%;
+  width: auto;
 }
-.checkbox-wrapper .label__text,
-.radio-wrapper .label__text {
+.fieldset .label__text {
   display: block;
   position: relative;
   font-weight: 400;
@@ -1511,8 +1514,7 @@ body.lock {
   transform: translateY(0px);
   cursor: pointer;
 }
-.checkbox-wrapper .label__text:after,
-.radio-wrapper .label__text:after {
+.fieldset .label__text:after {
   content: "";
   display: block;
   width: 16px;
@@ -1528,6 +1530,10 @@ body.lock {
   transition: 250ms var(--cubic);
 }
 
+.fieldset.fieldset--radio .label__text:after {
+  border-radius: 20px;
+}
+
 .checkbox,
 .radio {
   position: absolute;
@@ -1539,17 +1545,11 @@ body.lock {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
-.label--radio .label__text:after {
-  border-radius: 20px;
-}
-
 .checkbox:checked + .label__text:after,
 .radio:checked + .label__text:after {
   border: 1px solid var(--green) !important;
   background: var(--green);
 }
-
 .checkbox.red + .label__text:after,
 .radio.red + .label__text:after {
   border: 1px solid var(--red);
