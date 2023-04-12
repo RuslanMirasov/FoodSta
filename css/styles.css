@@ -1609,14 +1609,13 @@ textarea + .label__error {
   background: var(--backdrop);
   opacity: 1;
   visibility: visible;
-  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s, visibility 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 99;
 }
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s, visibility 400ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 .backdrop .popup__body {
   width: 100%;
@@ -1646,7 +1645,7 @@ textarea + .label__error {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  transition: transform 300ms var(--cubic), opacity 300ms var(--cubic), visibility 300ms var(--cubic);
+  transition: 300ms var(--cubic);
 }
 .popup.is-hidden {
   visibility: hidden;

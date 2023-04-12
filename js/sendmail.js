@@ -3,16 +3,21 @@ const forms = document.querySelectorAll('.form');
 const inputs = document.querySelectorAll('input, textarea');
 const agree = document.querySelectorAll('.agree');
 
-//INPUT FOCUS CLEAR CONDITIONS
-inputs.forEach(field => {
-   field.addEventListener('focus', function () {
+const addErrorText = true;
+const errorEmptyInput = 'The field must not be empty!';
+const errorEmailInput = 'Wrong E-mail format!';
+const errorPhoneInput = 'Wrong phone format!';
+const errorMinNumber = 'The minimum value is';
+const errorMaxNumber = 'The maximum value is';
+
+//INPUT CLEAR ON FOCUS
+inputs.forEach(input => {
+   input.addEventListener('focus', function () {
       if (this.classList.contains('red')) {
          this.classList.remove('red');
-         this.parentNode.childNodes.forEach(element => {
-            if (element.classList != undefined && element.classList.contains('label__error')) {
-               element.remove();
-            }
-         });
+         if (addErrorsText == true) {
+            this.closest('.label').querySelector('.label__error').remove();
+         }
       }
    });
 });
@@ -80,23 +85,23 @@ function checkForm(formId) {
       let requiredLabel = required.parentNode;
       let requiredInput = required;
       if (requiredInput.value == '') {
-         addError(requiredLabel, 'The field must not be empty!');
+         addError(requiredLabel, errorEmptyInput);
       } else {
          //type email
          if (requiredInput.type == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.value)) {
-            addError(requiredLabel, 'Wrong E-mail format!');
+            addError(requiredLabel, errorEmailInput);
          }
          //type tel
          if (requiredInput.type == 'tel' && /[^0-9\+ ()\-]/.test(requiredInput.value)) {
-            addError(requiredLabel, 'Wrong phone format!');
+            addError(requiredLabel, errorPhoneInput);
          }
          //type number
          if (requiredInput.type == 'number') {
             if (requiredInput.min && Number(requiredInput.value) < Number(requiredInput.min)) {
-               addError(requiredLabel, `Minimal number ${requiredInput.min}`);
+               addError(requiredLabel, errorMinNumber + ' ' + requiredInput.min);
             }
             if (requiredInput.max && Number(requiredInput.value) > Number(requiredInput.max)) {
-               addError(requiredLabel, `Maximal number ${requiredInput.max}`);
+               addError(requiredLabel, errorMaxNumber + ' ' + requiredInput.max);
             }
          }
       }
@@ -107,12 +112,14 @@ function checkForm(formId) {
 
       //ERROR TEXT CREATE
       function addError(correntLabel, text) {
-         let errors = correntLabel.querySelectorAll('.label__error').length;
-         if (errors < 1) {
-            correntLabel.insertAdjacentHTML(
-               'beforeend',
-               '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + text + '</div>'
-            );
+         if (addErrorsText === true) {
+            let errors = correntLabel.querySelectorAll('.label__error').length;
+            if (errors < 1) {
+               correntLabel.insertAdjacentHTML(
+                  'beforeend',
+                  '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + text + '</div>'
+               );
+            }
          }
          checkerFalse();
       }
