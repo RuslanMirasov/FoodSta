@@ -104,30 +104,46 @@
 }
 
 /*checkbox and radio*/
-.label--checkbox,
-.label--radio {
-   margin-top: 26px;
-}
-
-.label--checkbox .label__text,
-.label--radio .label__text {
-   display: block;
+.checkbox-wrapper,
+.radio-wrapper {
+   display: flex;
+   flex-wrap: wrap;
    position: relative;
-   font-weight: 400;
-   font-size: 14px;
-   line-height: 1.1;
-   color: var(--black);
-   left: 0px;
-   bottom: 0;
-   padding: 1px 0px 1px 24px;
-   transform: translateY(0px);
-   cursor: pointer;
-}
-
-.label--checkbox .label__text a,
-.label--radio .label__text a {
-   color: var(--black);
-   text-decoration: underline;
+   margin-top: 24px;
+   align-items: center;
+   gap: 20px;
+   .label {
+      margin: 0;
+      width: 50%;
+   }
+   .label__text {
+      display: block;
+      position: relative;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.1;
+      color: var(--black);
+      left: 0px;
+      bottom: 0;
+      padding: 1px 0px 1px 24px;
+      transform: translateY(0px);
+      cursor: pointer;
+      &:after {
+         content: '';
+         display: block;
+         width: 16px;
+         height: 16px;
+         background: var(--white);
+         background-origin: border-box;
+         border-radius: 2px;
+         position: absolute;
+         box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+         left: 0px;
+         top: 0px;
+         cursor: pointer;
+         transition: 250ms var(--cubic);
+      }
+   }
 }
 
 .checkbox,
@@ -140,24 +156,6 @@
    padding: 0;
    clip: rect(0 0 0 0);
    overflow: hidden;
-}
-
-.label--checkbox .label__text:after,
-.label--radio .label__text:after {
-   content: '';
-   display: block;
-   width: 16px;
-   height: 16px;
-   /* border: 1px solid var(--white); */
-   background: var(--white);
-   background-origin: border-box;
-   border-radius: 2px;
-   position: absolute;
-   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
-   left: 0px;
-   top: 0px;
-   cursor: pointer;
-   transition: background 250ms var(--cubic), border 250ms var(--cubic);
 }
 
 .label--radio .label__text:after {

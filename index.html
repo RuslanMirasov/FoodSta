@@ -389,24 +389,49 @@
                   <!-- name -->
                   <label class="label">
                      <span class="label__text">Name</span>
-                     <input type="text" class="input" name="name" placeholder="Your name" required />
+                     <input type="text" class="input" name="name" placeholder="Ruslan Mirasov" required />
                   </label>
                   <!-- Phone -->
                   <label class="label">
                      <span class="label__text">Phone number</span>
-                     <input type="tel" class="input" name="phone" placeholder="+38(0__) ___ __ __" required />
+                     <input type="tel" class="input" name="phone" placeholder="+38 (0--) --- -- --" required />
                   </label>
                   <!-- Email -->
                   <label class="label">
                      <span class="label__text">Email</span>
                      <input type="email" class="input" name="email" placeholder="example@gmail.com" required />
                   </label>
-
-                  <!-- Email -->
+                  <!-- Number -->
                   <label class="label">
-                     <span class="label__text">Number</span>
+                     <span class="label__text">Number (10-50)</span>
                      <input type="number" class="input" name="number" placeholder="10-50" min="10" max="50" required />
                   </label>
+                  <!-- checkbox -->
+                  <fieldset class="checkbox-wrapper">
+                     <label class="label">
+                        <span class="label__text">HTML</span>
+                        <input type="checkbox" class="checkbox" name="skills" value="HTML" required />
+                     </label>
+                     <label class="label">
+                        <span class="label__text">CSS</span>
+                        <input type="checkbox" class="checkbox" name="skills" value="CSS" required />
+                     </label>
+                     <label class="label">
+                        <span class="label__text">Javascript</span>
+                        <input type="checkbox" class="checkbox" name="skills" value="Javascript" required />
+                     </label>
+                  </fieldset>
+                  <!-- radio -->
+                  <fieldset class="radio-wrapper">
+                     <label class="label">
+                        <span class="label__text">Male</span>
+                        <input type="radio" class="radio" name="sex" value="Male" />
+                     </label>
+                     <label class="label">
+                        <span class="label__text">Female</span>
+                        <input type="radio" class="radio" name="sex" value="Female" />
+                     </label>
+                  </fieldset>
 
                   <!-- submit -->
                   <button type="submit" class="button button--border medium button--submit">Send</button>

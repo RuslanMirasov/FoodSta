@@ -4,7 +4,10 @@ const inputs = document.querySelectorAll('input, textarea');
 const agree = document.querySelectorAll('.agree');
 
 const addErrorText = true;
+const minSymbols = 3;
+const errorSymbols = 'Minimum characters!';
 const errorEmptyInput = 'The field must not be empty!';
+const errorNameInput = 'Only letters are allowed!';
 const errorEmailInput = 'Wrong E-mail format!';
 const errorPhoneInput = 'Wrong phone format!';
 const errorMinNumber = 'The minimum value is';
@@ -15,7 +18,7 @@ inputs.forEach(input => {
    input.addEventListener('focus', function () {
       if (this.classList.contains('red')) {
          this.classList.remove('red');
-         if (addErrorsText == true) {
+         if (addErrorText == true) {
             this.closest('.label').querySelector('.label__error').remove();
          }
       }
@@ -62,6 +65,70 @@ forms.forEach(form => {
    });
 });
 
+//FORMS VALIDATION
+function checkForm(formId) {
+   let checker = true;
+   formId.querySelectorAll('[required]').forEach(required => {
+      let requiredLabel = required.parentNode;
+      let requiredInput = required;
+      if (requiredInput.value.length === 0) {
+         addError(requiredLabel, errorEmptyInput);
+      } else {
+         if (requiredInput.value.length < minSymbols && requiredInput.type !== 'number') {
+            let minSymbolsErrorText = errorSymbols.split(' ');
+            addError(requiredLabel, minSymbolsErrorText[0] + ' ' + minSymbols + ' ' + minSymbolsErrorText[1]);
+         } else {
+            //type Name
+            if (requiredInput.name == 'name' && /[^A-zА-яЁё\+ ()\-]/.test(requiredInput.value)) {
+               addError(requiredLabel, errorNameInput);
+            }
+            //type email
+            if (requiredInput.type == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.value)) {
+               addError(requiredLabel, errorEmailInput);
+            }
+            //type tel
+            if (requiredInput.type == 'tel' && /[^0-9\+ ()\-]/.test(requiredInput.value)) {
+               addError(requiredLabel, errorPhoneInput);
+            }
+            //type number
+            if (requiredInput.type == 'number') {
+               if (requiredInput.min && Number(requiredInput.value) < Number(requiredInput.min)) {
+                  addError(requiredLabel, errorMinNumber + ' ' + requiredInput.min);
+               }
+               if (requiredInput.max && Number(requiredInput.value) > Number(requiredInput.max)) {
+                  addError(requiredLabel, errorMaxNumber + ' ' + requiredInput.max);
+               }
+            }
+         }
+      }
+      //type checkbox & radio
+      if ((requiredInput.type == 'checkbox' && !requiredInput.checked) || (requiredInput.type == 'radio' && !requiredInput.checked)) {
+         checkerFalse();
+      }
+
+      //ERROR TEXT CREATE
+      function addError(correntLabel, text) {
+         if (addErrorText === true) {
+            let errors = correntLabel.querySelectorAll('.label__error').length;
+            if (errors < 1) {
+               correntLabel.insertAdjacentHTML(
+                  'beforeend',
+                  '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + text + '</div>'
+               );
+            }
+         }
+         checkerFalse();
+      }
+
+      //ADD "RED" CLASS TO INPUTS
+      function checkerFalse() {
+         requiredInput.classList.add('red');
+         checker = false;
+      }
+   });
+   return checker;
+}
+
 //OLL FORMS RESET
 function formsReset() {
    forms.forEach(form => {
@@ -76,58 +143,4 @@ function formsReset() {
          form.querySelector('[type=submit]').disabled = true;
       }
    });
-}
-
-//FORMS VALIDATION
-function checkForm(formId) {
-   let checker = true;
-   formId.querySelectorAll('[required]').forEach(required => {
-      let requiredLabel = required.parentNode;
-      let requiredInput = required;
-      if (requiredInput.value == '') {
-         addError(requiredLabel, errorEmptyInput);
-      } else {
-         //type email
-         if (requiredInput.type == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(requiredInput.value)) {
-            addError(requiredLabel, errorEmailInput);
-         }
-         //type tel
-         if (requiredInput.type == 'tel' && /[^0-9\+ ()\-]/.test(requiredInput.value)) {
-            addError(requiredLabel, errorPhoneInput);
-         }
-         //type number
-         if (requiredInput.type == 'number') {
-            if (requiredInput.min && Number(requiredInput.value) < Number(requiredInput.min)) {
-               addError(requiredLabel, errorMinNumber + ' ' + requiredInput.min);
-            }
-            if (requiredInput.max && Number(requiredInput.value) > Number(requiredInput.max)) {
-               addError(requiredLabel, errorMaxNumber + ' ' + requiredInput.max);
-            }
-         }
-      }
-      //type checkbox & radio
-      if ((requiredInput.type == 'checkbox' && !requiredInput.checked) || (requiredInput.type == 'radio' && !requiredInput.checked)) {
-         checkerFalse();
-      }
-
-      //ERROR TEXT CREATE
-      function addError(correntLabel, text) {
-         if (addErrorsText === true) {
-            let errors = correntLabel.querySelectorAll('.label__error').length;
-            if (errors < 1) {
-               correntLabel.insertAdjacentHTML(
-                  'beforeend',
-                  '<div class="label__error"><svg width="14" height="14" class="label__icon"><use href="./images/icons.svg#alert"></use></svg>' + text + '</div>'
-               );
-            }
-         }
-         checkerFalse();
-      }
-      //ADD "RED" CLASS TO INPUTS
-      function checkerFalse() {
-         requiredInput.classList.add('red');
-         checker = false;
-      }
-   });
-   return checker;
 }
