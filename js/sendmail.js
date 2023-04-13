@@ -80,7 +80,7 @@ forms.forEach(form => {
             //----- google Analitics targets
             //-----
             // ----
-         }, 1000);
+         }, 1500);
       }
       return false;
    });

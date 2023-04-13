@@ -1600,6 +1600,26 @@ textarea + .label__error {
 
 /*-------------------- MODAL POPUP*/
 .backdrop {
+  display: block;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: var(--backdrop);
+  z-index: 98;
+  opacity: 1;
+  visibility: visible;
+  transition: 250ms var(--cubic);
+}
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  display: block;
   position: fixed;
   left: 0px;
   top: 0px;
@@ -1607,18 +1627,22 @@ textarea + .label__error {
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  background: var(--backdrop);
   opacity: 1;
   visibility: visible;
-  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 99;
+  transition: opacity 0s linear 0s, visibility 0s linear 0s, pointer-events 0s linear 0s;
 }
-.backdrop.is-hidden {
+.modal.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0s linear 250ms, visibility 0s linear 250ms, pointer-events 0s linear 250ms;
 }
-.backdrop .popup__body {
+.modal.is-hidden .popup {
+  opacity: 0;
+  transform: translate(0px, 10px);
+}
+.modal .popup__body {
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -1627,39 +1651,30 @@ textarea + .label__error {
   padding: 18px;
   position: relative;
 }
-
-.popup {
+.modal .popup {
   position: relative;
   width: 100%;
   max-width: 400px;
   height: auto;
   text-align: center;
-  transform: translate(0px, 0px);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
   border-radius: 30px;
   background: var(--yellou);
   padding: 32px;
-  visibility: visible;
   opacity: 1;
-  pointer-events: all;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  transition: 300ms var(--cubic);
+  transform: translate(0px, 0px);
+  transition: opacity 250ms var(--cubic), transform 250ms var(--cubic);
 }
-.popup.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(0px, 10px);
-}
-.popup .button {
+.modal .popup .button {
   margin-top: 32px;
   min-width: 110px;
 }
 @media screen and (max-width: 419px) {
-  .popup {
+  .modal .popup {
     padding: 32px 16px;
   }
 }
@@ -1702,18 +1717,16 @@ textarea + .label__error {
   margin-bottom: 32px;
 }
 
-#loading {
+#loading .popup {
   background: rgba(0, 0, 0, 0);
   box-shadow: none;
   width: 100px;
   height: 100px;
   border-radius: 10px;
   padding: 10px;
-}
-#loading.is-hidden {
   transform: translate(0px, 0px);
 }
-#loading:before {
+#loading .popup:before {
   content: "";
   position: absolute;
   width: 60%;
